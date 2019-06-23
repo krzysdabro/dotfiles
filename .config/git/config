@@ -1,0 +1,14 @@
+[alias]
+  a  = add
+  co = checkout
+  d  = diff --patch-with-stat HEAD
+  l  = log --oneline
+  s  = status -sb
+
+[url "git@github.com:"]
+  pushInsteadOf = "https://github.com/"
+  pushInsteadOf = "git://github.com/"
+
+[user]
+  name  = Krzysztof Dąbrowski
+  email = krzysdabro@live.com
