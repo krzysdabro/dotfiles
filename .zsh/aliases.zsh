@@ -13,7 +13,7 @@ else
 fi
 
 # Other
-if [[ IS_OSX ]]; then
+if [[ ! IS_OSX ]]; then
   alias ip="ip -br -c"
 fi
 alias rsync="rsync -P"

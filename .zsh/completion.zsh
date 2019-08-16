@@ -18,9 +18,6 @@ _ssh_config=()
 if [[ -f ~/.ssh/config ]]; then
   _ssh_config+=(`cat ~/.ssh/config | sed -ne '/*[^\*]*/d' -e 's/^Host[=\t ]//p'`)
 fi
-if [[ -d ~/.ssh/config.d ]]; then
-  _ssh_config+=(`cat ~/.ssh/config.d/* | sed -ne '/*[^\*]*/d' -e 's/^Host[=\t ]//p'`)
-fi
 hosts=(
   "$_ssh_config[@]"
   `hostname`

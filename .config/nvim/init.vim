@@ -42,6 +42,3 @@ augroup Terminal
   autocmd TermOpen * setlocal nonumber            " Hide numer line
   autocmd TermOpen * startinsert                  " Start in insert mode
 augroup end
-
-" Force saving files that require root permission 
-command! W w !sudo tee > /dev/null %

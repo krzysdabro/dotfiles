@@ -6,6 +6,7 @@ export PAGER=less
 
 if [[ IS_OSX ]]; then
   export PATH=$PATH:/usr/local/sbin:/usr/local/opt/python/Frameworks/Python.framework/Versions/3.7/bin
+  export FPATH=/usr/local/share/zsh-completions:$FPATH
   export LSCOLORS="ExGxFxdxCxdxDahbadacec"
   export LC_ALL=en_US
 else
