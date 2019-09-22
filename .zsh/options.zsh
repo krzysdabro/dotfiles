@@ -16,13 +16,11 @@ SAVEHIST=2000
 
 # Key bindings
 bindkey -e
-bindkey "${terminfo[kdch1]}" delete-char
-bindkey "${terminfo[khome]}" beginning-of-line
-bindkey "\e[H"               beginning-of-line
-bindkey "${terminfo[kend]}"  end-of-line
-bindkey "\e[F"               end-of-line
-bindkey "\e\e[D"             backward-word
-bindkey "\e[1;3D"            backward-word
-bindkey "\e\e[C"             forward-word
-bindkey "\e[1;3C"            forward-word
-bindkey "${terminfo[kcbt]}"  reverse-menu-complete
+bindkey "\e[H"     beginning-of-line
+bindkey "\e[F"     end-of-line
+bindkey "\e\e[D"   backward-word
+bindkey "\e[1;3D"  backward-word
+bindkey "\e\e[C"   forward-word
+bindkey "\e[1;3C"  forward-word
+bindkey "\e[3~"    delete-char
+bindkey "\e[Z"     reverse-menu-complete
