@@ -25,5 +25,8 @@ if [[ "$SSH_CONNECTION" != "" ]]; then
   __color_ps1="yellow"
 fi
 
+if ! [[ "$OSTYPE" =~ ^darwin ]]; then
+  RPS1="\$(__git_ps1)"
+fi
+
 PS1="[%F{${__color_ps1:-green}}%n@%m%f %F{blue}%~%f] "
-RPS1="\$(__git_ps1)"
