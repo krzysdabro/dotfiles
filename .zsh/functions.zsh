@@ -1,16 +1,19 @@
+# Run container with tools
 docker-tools() {
-  docker run -itv $HOME:/root krzysdabro/tools:latest
+  docker run -itv $HOME:/root --rm krzysdabro/tools:latest
 }
 
+# Create a new directory and enter it
+mkd() {
+  mkdir -p "$@" && cd "$@"
+}
+
+# Return public IP
 myip() {
   curl https://ipinfo.io/ip
 }
 
-transfer() {
-  file="${1:t}"
-  curl --upload-file "$1" --progress-bar -H "Max-Downloads: 1" "https://transfer.sh/$file"
-}
-
+# Show weather
 weather() {
   curl https://wttr.in/${1:-Poznan}\?2mnq
 }
