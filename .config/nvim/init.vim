@@ -36,6 +36,9 @@ nnoremap <M-l> <C-w>L
 
 tnoremap <Esc> <C-\><C-n>
 
+" Commands
+command! W write
+
 " Terminal
 augroup Terminal
   autocmd!

@@ -1,6 +1,6 @@
 # Run container with tools
 docker-tools() {
-  docker run -itv $HOME:/root --rm krzysdabro/tools:latest
+  docker run -itv "$HOME:/root" -w "${PWD/$HOME//root}" --rm krzysdabro/tools:latest
 }
 
 # Create a new directory and enter it
