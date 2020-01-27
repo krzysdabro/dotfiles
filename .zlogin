@@ -1,5 +1,5 @@
 SSH_AGENT_FILE=~/.ssh/.agent
-SSH_AGENT_TIME=30m
+SSH_AGENT_TIME=60m
 
 start_ssh_agent() {
   echo "Starting SSH agent..."
