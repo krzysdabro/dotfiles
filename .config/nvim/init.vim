@@ -36,6 +36,9 @@ nnoremap <M-l> <C-w>L
 
 tnoremap <Esc> <C-\><C-n>
 
+" Filetypes
+au BufRead,BufNewFile ~/.ssh/config.d/* setfiletype sshconfig
+
 " Commands
 command! W write
 

@@ -1,13 +1,16 @@
 tap "homebrew/cask-versions"
 
-brew "assh"
+
+brew "coreutils"
 brew "curl"
+brew "gnupg"
 brew "htop"
 brew "iproute2mac"
 brew "neovim"
 brew "python"
 brew "zsh"
 brew "zsh-completions"
+
 
 cask "discord-canary"
 cask "docker"

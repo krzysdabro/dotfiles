@@ -7,28 +7,27 @@ zstyle ':completion:*' insert-tab pending
 # completion with menu
 zstyle ':completion:*' menu select
 
+# group completions
+zstyle ':completion:*' group true
+zstyle ':completion:*' group-name ''
+
 # colors in menu
-#zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # prompt for long lists
 zstyle ':completion:*' select-prompt %SLine %l \(%p\)%s
 
-# hosts completion
-_ssh_config=()
-if [[ -f ~/.ssh/config ]]; then
-  _ssh_config+=(`cat ~/.ssh/config | sed -ne '/*[^\*]*/d' -e 's/^Host[=\t ]//p'`)
-fi
-hosts=(
-  "$_ssh_config[@]"
-  `hostname`
-  localhost
-)
-zstyle ':completion:*:hosts' hosts $hosts
+# ignore zsh internal functions
+zstyle ':completion:*:functions' ignored-patterns '_*'
 
-# users completion
-users=($(awk -F':' '{if (($3 >= 1000 || $3 == 0) && $1 != "nobody") print $1}' /etc/passwd))
-zstyle ':completion:*:users' users $users
-zstyle ':completion:*:(ssh|scp|rsync):*:users' users
+# SSH completion
+hosts=(`awk '/^Host/ {for (i=2; i <= NF; i++) {gsub(/\*\.?/, "", $2); print $i}}' ~/.ssh/config ~/.ssh/config.d/*(.)`)
+users=(`awk '/^[\t ]+User/ && !seen[$2]++ {print $2}' ~/.ssh/config ~/.ssh/config.d/*(.)`)
+
+zstyle ':completion:*:(ssh|scp|rsync):*' hosts "$hosts[@]"
+zstyle ':completion:*:(ssh|scp|rsync):*' users "$users[@]"
+zstyle ':completion:*:(ssh|scp|rsync):*:hosts' list-colors '=*-=1;35' '=*=1;34'
+zstyle ':completion:*:(ssh|scp|rsync):*:users' list-colors '=*=1;32'
 
 autoload -Uz compinit
 compinit
