@@ -8,6 +8,8 @@
 	<true/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
+	<key>ApplePressAndHoldEnabled</key>
+	<false/>
 	<key>AppleScrollAnimationEnabled</key>
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
@@ -591,7 +593,7 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>275 252 918 512 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>155 93 850 743 0 0 1440 877 </string>
+	<string>0 66 1440 811 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>197 170 850 707 0 0 1440 877 </string>
 	<key>New Bookmarks</key>
@@ -1538,13 +1540,15 @@
 	<key>NoSyncAllAppVersions</key>
 	<array>
 		<string>3.3.6</string>
+		<string>3.3.8</string>
 		<string>3.3.4</string>
 		<string>3.3.1</string>
 		<string>3.3.3</string>
 		<string>3.3.7</string>
-		<string>3.2.9</string>
+		<string>3.3.9</string>
 		<string>3.3.0</string>
 		<string>3.3.2</string>
+		<string>3.2.9</string>
 	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
@@ -1567,7 +1571,9 @@
 	<key>NoSyncLastTipTime</key>
 	<real>585316445.179986</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>20</integer>
+	<integer>34</integer>
+	<key>NoSyncNeverPromptToChangeOption</key>
+	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -2024,6 +2030,14 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
+				<string>currentTab.titleOverrideFormat</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
 				<string>currentTab.currentSession.tty</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
@@ -2276,16 +2290,6 @@
 			</dict>
 		</array>
 	</dict>
-	<key>NoSyncSearchHistory</key>
-	<array>
-		<string>zabbix</string>
-		<string>mysql</string>
-	</array>
-	<key>NoSyncSearchHistory2</key>
-	<array>
-		<string>delete-char</string>
-		<string>end-of-line</string>
-	</array>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>582825023.51124203</real>
 	<key>NoSyncTipsDisabled</key>
@@ -2381,7 +2385,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-12-02T20:48:20Z</date>
+	<date>2020-04-10T12:44:07Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
@@ -2408,6 +2412,10 @@
 	<integer>5</integer>
 	<key>TabViewType</key>
 	<integer>0</integer>
+	<key>ToolbeltTools</key>
+	<array>
+		<string>Actions</string>
+	</array>
 	<key>URLHandlersByGuid</key>
 	<dict>
 		<key>http</key>
@@ -2426,6 +2434,6 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.3.7</string>
+	<string>3.3.9</string>
 </dict>
 </plist>
