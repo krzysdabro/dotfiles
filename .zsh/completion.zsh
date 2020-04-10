@@ -21,8 +21,8 @@ zstyle ':completion:*' select-prompt %SLine %l \(%p\)%s
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
 # SSH completion
-hosts=(`awk '/^Host/ {for (i=2; i <= NF; i++) {gsub(/\*\.?/, "", $2); print $i}}' ~/.ssh/config ~/.ssh/config.d/*(.)`)
-users=(`awk '/^[\t ]+User/ && !seen[$2]++ {print $2}' ~/.ssh/config ~/.ssh/config.d/*(.)`)
+hosts=(`awk '/^Host/ {for (i=2; i <= NF; i++) {gsub(/\*\.?/, "", $2); print $i}}' ~/.ssh/config ~/.ssh/config.d/*(.)`) 2> /dev/null
+users=(`awk '/^[\t ]+User/ && !seen[$2]++ {print $2}' ~/.ssh/config ~/.ssh/config.d/*(.)`) 2> /dev/null
 
 zstyle ':completion:*:(ssh|scp|rsync):*' hosts "$hosts[@]"
 zstyle ':completion:*:(ssh|scp|rsync):*' users "$users[@]"
