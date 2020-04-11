@@ -10,8 +10,6 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
   export LSCOLORS="ExGxFxdxCxdxDahbadacec"
   export LC_ALL=en_US.UTF-8
   export LANG=en_US.UTF-8
-else
-  export BROWSER=google-chrome-unstable
 fi
 
 for file in $ZSH/*.zsh; do

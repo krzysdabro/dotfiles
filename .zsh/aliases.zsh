@@ -1,5 +1,5 @@
 alias reload=". ~/.zshrc"
-alias config='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
@@ -14,7 +14,7 @@ else
 fi
 
 # Other
-if ! [[ "$OSTYPE" =~ ^darwin ]]; then
+if [[ ! "$OSTYPE" =~ ^darwin ]]; then
   alias ip="ip -br -c"
 fi
 alias rsync="rsync -P"
