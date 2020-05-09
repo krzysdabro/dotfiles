@@ -1,3 +1,4 @@
+source ~/.config/nvim/functions.vim
 source ~/.config/nvim/plugins.vim
 
 " General
@@ -34,13 +35,14 @@ nnoremap <M-j> <C-w>J
 nnoremap <M-k> <C-w>K
 nnoremap <M-l> <C-w>L
 
-tnoremap <Esc> <C-\><C-n>
+tnoremap <Esc><Esc> <C-\><C-n>
 
 " Filetypes
 au BufRead,BufNewFile ~/.ssh/config.d/* setfiletype sshconfig
 
 " Commands
 command! W write
+command! Wq wq
 
 " Terminal
 augroup Terminal

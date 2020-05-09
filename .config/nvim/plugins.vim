@@ -14,9 +14,12 @@ call plug#end()
 let g:lightline = {
   \ 'colorscheme': 'nord',
   \ 'active': {
-  \   'right': [ [ 'lineinfo' ],
-  \              [ 'percent' ],
-  \              [ 'gitbranch', 'fileformat', 'fileencoding', 'filetype'] ]
+  \   'right': [['lineinfo'],
+  \             ['percent'],
+  \             ['gitbranch', 'fileformat', 'fileencoding', 'filetype']]
+  \ },
+  \ 'inactive': {
+  \   'left': [['filename', 'modified']]
   \ },
   \ 'component_function': {
   \   'gitbranch': 'fugitive#head'

@@ -1,6 +1,9 @@
 alias reload=". ~/.zshrc"
 alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
+alias vi="nvim"
+alias vim="nvim"
+
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
