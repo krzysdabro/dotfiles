@@ -7,9 +7,8 @@
 
 [url "git@github.com:"]
   pushInsteadOf = "https://github.com/"
-  pushInsteadOf = "git://github.com/"
 
 [user]
-  name  = Krzysztof Dąbrowski
-  email = krzysdabro@live.com
+  name       = Krzysztof Dąbrowski
+  email      = krzysdabro@live.com
   signingkey = C780EDC8C8805BD2

@@ -1,0 +1,43 @@
+{
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.minimap.enabled": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "git.confirmSync": false,
+  "git.countBadge": "tracked",
+  "scm.countBadge": "focused",
+  "workbench.colorTheme": "Nord",
+
+  "dotfiles.repository": "krzysdabro/dotfiles",
+
+  // File associations
+  "files.associations": {
+    "Brewfile": "ruby"
+  },
+
+  // Python
+  "[python]": {
+    "editor.tabSize": 4
+  },
+  "python.dataScience.askForKernelRestart": false,
+  "python.disableInstallationCheck": false,
+  "python.pythonPath": "/usr/local/bin/python3",
+
+  // Go
+  "[go]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": false
+  },
+  "go.buildOnSave": "off",
+  "go.formatTool": "gofmt",
+  "go.lintOnSave": "file",
+  "go.useLanguageServer": true,
+
+  // YAML
+  "yaml.customTags" : ["!vault"],
+  "yaml.format.singleQuote": true,
+}

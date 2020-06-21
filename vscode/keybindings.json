@@ -1,0 +1,8 @@
+// Place your key bindings in this file to override the defaults
+[
+  // Allows to type "ź"
+  {
+    "key": "alt+z",
+    "command": "-editor.action.toggleWordWrap"
+  }
+]

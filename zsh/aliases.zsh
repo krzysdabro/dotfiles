@@ -1,5 +1,4 @@
 alias reload=". ~/.zshrc"
-alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
 alias vi="nvim"
 alias vim="nvim"
@@ -20,6 +19,6 @@ fi
 if [[ ! "$OSTYPE" =~ ^darwin ]]; then
   alias ip="ip -br -c"
 fi
+
 alias rsync="rsync -P"
 alias sudo="sudo "
-
