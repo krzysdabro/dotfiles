@@ -1,12 +1,16 @@
 [alias]
   a  = add
   co = checkout
-  d  = diff --patch-with-stat HEAD
+  d  = diff --patch-with-stat
+  dc = diff --patch-with-stat --cached
   l  = log --oneline
   s  = status -sb
 
 [url "git@github.com:"]
   pushInsteadOf = "https://github.com/"
+
+[pull]
+  rebase = true
 
 [user]
   name       = Krzysztof Dąbrowski
