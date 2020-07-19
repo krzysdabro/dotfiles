@@ -39,5 +39,5 @@
 
   // YAML
   "yaml.customTags" : ["!vault"],
-  "yaml.format.singleQuote": true,
+  "yaml.format.singleQuote": true
 }
