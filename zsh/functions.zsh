@@ -7,3 +7,8 @@ mkd() {
 myip() {
   curl https://ipinfo.io/ip
 }
+
+# Run container with tools
+docker-tools() {
+  docker run -itv "$HOME:/root" -w "${PWD/$HOME//root}" --rm krzysdabro/tools:latest
+}
