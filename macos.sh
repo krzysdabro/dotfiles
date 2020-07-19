@@ -51,3 +51,7 @@ defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 
 killall "Dock"
 killall "Finder"
+
+
+# ssh: don't send LANG and LC_* environments
+sed 's/SendEnv LANG/#SendEnv LANG/' /etc/ssh/ssh_config | sudo tee /etc/ssh/ssh_config
