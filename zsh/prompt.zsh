@@ -24,10 +24,14 @@ __git_ps1() {
 
 if [[ "$SSH_CONNECTION" != "" ]]; then
   __color_ps1="yellow"
+elif [[ -f /.dockerenv ]]; then
+  __color_ps1="cyan"
 fi
 
-if [[ ! "$OSTYPE" =~ ^darwin ]]; then
+if [[ ! ("$OSTYPE" =~ ^darwin || -f /.dockerenv) ]]; then
   RPS1="\$(__git_ps1)"
+else
+  RPS1=""
 fi
 
 PS1="[%F{${__color_ps1:-green}}%n@%m%f %F{blue}%~%f] "
