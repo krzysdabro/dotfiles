@@ -12,6 +12,7 @@ arrow() {
 
 link() {
   rm -rf "$2"
+  mkdir -p `dirname "$2"`
   ln -s "$1" "$2"
 }
 
@@ -33,8 +34,8 @@ install_zsh() {
 install_nvim() {
   arrow "Neovim"
 
-  link "${DOTFILES}/nvim/" "${HOME}/.config/nvim"
-  curl -sLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
+  link "${DOTFILES}/nvim" "${HOME}/.config/nvim"
+  curl -sLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
 
