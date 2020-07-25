@@ -20,6 +20,9 @@ zstyle ':completion:*' select-prompt %SLine %l \(%p\)%s
 # ignore zsh internal functions
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
+# find new executables in path
+zstyle ':completion:*' rehash true
+
 # SSH completion
 hosts=(`awk '/^Host/ {for (i=2; i <= NF; i++) {gsub(/\*\.?/, "", $2); print $i}}' ~/.ssh/config ~/.ssh/config.d/*(.)`) 2> /dev/null
 users=(`awk '/^[\t ]+User/ && !seen[$2]++ {print $2}' ~/.ssh/config ~/.ssh/config.d/*(.)`) 2> /dev/null
