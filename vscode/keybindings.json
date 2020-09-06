@@ -1,8 +1,12 @@
 // Place your key bindings in this file to override the defaults
 [
-  // Allows to type "ź"
+  // Allows to type Polish letters
   {
     "key": "alt+z",
     "command": "-editor.action.toggleWordWrap"
+  },
+  {
+    "key": "alt+c",
+    "command": "-markdown.extension.checkTaskList"
   }
 ]

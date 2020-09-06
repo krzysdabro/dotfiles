@@ -1,4 +1,5 @@
 {
+  // General
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.minimap.enabled": false,
@@ -12,7 +13,14 @@
   "scm.countBadge": "focused",
   "workbench.colorTheme": "Nord",
 
+  // Settings sync
+  "settingsSync.ignoredSettings": [
+    "python.pythonPath"
+  ],
+
+  // Other
   "dotfiles.repository": "krzysdabro/dotfiles",
+  "gitlab.instanceUrl": "https://gitlab.tenesys.pl",
 
   // File associations
   "files.associations": {
@@ -26,6 +34,7 @@
   "python.dataScience.askForKernelRestart": false,
   "python.disableInstallationCheck": false,
   "python.pythonPath": "/usr/local/bin/python3",
+  "python.showStartPage": false,
 
   // Go
   "[go]": {
@@ -38,6 +47,8 @@
   "go.useLanguageServer": true,
 
   // YAML
-  "yaml.customTags" : ["!vault"],
+  "yaml.customTags": [
+    "!vault"
+  ],
   "yaml.format.singleQuote": true
 }
