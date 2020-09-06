@@ -7,6 +7,9 @@
   s  = status -sb
   fpush = push --force-with-lease
 
+[http]
+	cookiefile = ~/.gitcookies
+
 [url "git@github.com:"]
   pushInsteadOf = "https://github.com/"
 
