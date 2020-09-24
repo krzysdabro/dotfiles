@@ -11,6 +11,8 @@ brew "zsh"
 brew "zsh-completions"
 
 
+cask "1password"
+cask "discord"
 cask "docker"
 cask "firefox"
 cask "gimp"

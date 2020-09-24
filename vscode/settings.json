@@ -8,10 +8,13 @@
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
+  "workbench.colorTheme": "Nord",
+
+  // SCM
+  "diffEditor.ignoreTrimWhitespace": false,
   "git.confirmSync": false,
   "git.countBadge": "tracked",
   "scm.countBadge": "focused",
-  "workbench.colorTheme": "Nord",
 
   // Settings sync
   "settingsSync.ignoredSettings": [
@@ -45,6 +48,12 @@
   "go.formatTool": "gofmt",
   "go.lintOnSave": "file",
   "go.useLanguageServer": true,
+  "gopls": {
+    "codelens": {
+      "generate": false,
+      "gc_details": true
+    }
+  },
 
   // YAML
   "yaml.customTags": [
