@@ -3,6 +3,7 @@ tap "homebrew/cask-versions"
 
 brew "coreutils"
 brew "curl"
+brew "gh"
 brew "go"
 brew "htop"
 brew "neovim"
