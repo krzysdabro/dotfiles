@@ -16,28 +16,30 @@
   "git.countBadge": "tracked",
   "scm.countBadge": "focused",
 
-  // Settings sync
-  "settingsSync.ignoredSettings": [
-    "python.pythonPath"
-  ],
-
-  // Other
+  // Other settings
   "dotfiles.repository": "krzysdabro/dotfiles",
-  "gitlab.instanceUrl": "https://gitlab.tenesys.pl",
+  "extensions.ignoreRecommendations": true,
+
+
 
   // File associations
   "files.associations": {
     "Brewfile": "ruby"
   },
 
-  // Python
-  "[python]": {
-    "editor.tabSize": 4
+
+
+  // C/C++
+  "[c]": {
+    "editor.formatOnSave": true
   },
-  "python.dataScience.askForKernelRestart": false,
-  "python.disableInstallationCheck": false,
-  "python.pythonPath": "/usr/local/bin/python3",
-  "python.showStartPage": false,
+  "[cpp]": {
+    "editor.formatOnSave": true
+  },
+  "C_Cpp.clang_format_style": "Google",
+
+  // HTML
+  "html.autoClosingTags": false,
 
   // Go
   "[go]": {
@@ -49,15 +51,31 @@
   "go.lintOnSave": "file",
   "go.useLanguageServer": true,
   "gopls": {
-    "codelens": {
+    "codelenses": {
       "generate": false,
-      "gc_details": true
+      "gc_details": true,
+      "experimentalWorkspaceModule": true,
+      "semanticTokens": true
     }
   },
+
+  // Python
+  "[python]": {
+    "editor.tabSize": 4
+  },
+  "python.disableInstallationCheck": false,
+  "python.showStartPage": false,
 
   // YAML
   "yaml.customTags": [
     "!vault"
   ],
-  "yaml.format.singleQuote": true
+  "yaml.format.singleQuote": true,
+  "yaml.validate": false,
+
+
+
+  // Discord
+  "discord.enabled": false,
+  "discord.workspaceElapsedTime": true
 }

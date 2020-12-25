@@ -1,0 +1,10 @@
+arcticicestudio.nord-visual-studio-code
+golang.go
+icrawl.discord-vscode
+ms-python.python
+ms-vscode-remote.remote-containers
+ms-vscode.cpptools
+redhat.vscode-yaml
+ritwickdey.liveserver
+samuelcolvin.jinjahtml
+yzhang.markdown-all-in-one
