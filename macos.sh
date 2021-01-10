@@ -1,21 +1,26 @@
 #!/bin/bash
+set -euo pipefail
 
 if [[ ! "$OSTYPE" =~ ^darwin ]]; then
   exit
 fi
 
 
+################
+# MacOS Settings
+################
+
 # Set dark theme
 defaults write NSGlobalDomain AppleInterfaceStyle -string 'Dark'
+
+# Finder: show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Finder: allow quitting via Cmd+Q
 defaults write com.apple.finder QuitMenuItem -bool true
 
 # Finder: show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles -bool true
-
-# Finder: show all filename extensions
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Finder: display full POSIX path as Finder window title
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
@@ -48,10 +53,16 @@ defaults write com.apple.dock mru-spaces -bool false
 # Dock: enable the Launchpad gesture
 defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 
+# Menu: Show the battery percentage
+defaults write com.apple.menuextra.battery ShowPercent YES
+
+# ssh: don't send LANG and LC_* environments
+sed 's/SendEnv LANG/#SendEnv LANG/' /etc/ssh/ssh_config | sudo tee /etc/ssh/ssh_config > /dev/null
+
+
+######################
+# Restart applications
+######################
 
 killall "Dock"
 killall "Finder"
-
-
-# ssh: don't send LANG and LC_* environments
-sed 's/SendEnv LANG/#SendEnv LANG/' /etc/ssh/ssh_config | sudo tee /etc/ssh/ssh_config

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 C_YELLOW="\e[0;33m"
 C_BLUE="\e[0;34m"
@@ -16,8 +17,16 @@ link() {
   ln -s "$1" "$2"
 }
 
-##################################################
+is_installed() {
+  if which $1 &> /dev/null; then
+    return 0
+  fi
+  return 1
+}
 
+#########################
+# Setup install functions
+#########################
 install_git() {
   arrow "Git"
 
@@ -47,22 +56,27 @@ install_vs_code() {
   else
     CODE_PATH="${HOME}/.config/Code/User"
   fi
-
   link "${DOTFILES}/vscode" "${CODE_PATH}"
+
+  while read extid; do
+    code --install-extension $extid > /dev/null
+  done < vscode/extensions.txt
 }
 
-##################################################
-
-install_git
-
-if which zsh &> /dev/null; then
-  install_zsh
+########################################
+# Updating software and installing XCode
+########################################
+if [[ ! "$OSTYPE" =~ ^darwin ]]; then
+  sudo softwareupdate -ia
+  xcode-select --install
+  ${DOTFILES}/macos.sh
 fi
 
-if which nvim &> /dev/null; then
-  install_nvim
-fi
 
-if which code &> /dev/null; then
-  install_vs_code
-fi
+##################
+# Install dotfiles
+##################
+is_installed git && install_git
+is_installed zsh && install_zsh
+is_installed nvim && install_nvim
+is_installed code && install_vs_code
