@@ -6,6 +6,7 @@
   l  = log --oneline
   s  = status -sb
   fpush = push --force-with-lease
+  purge-branches = "!git branch --merged | egrep -v '(\\*|master|main)' | xargs -n 1 git branch -d && git fetch --prune"
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
