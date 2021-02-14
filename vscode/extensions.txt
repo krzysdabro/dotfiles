@@ -8,4 +8,5 @@ ms-vscode.cpptools
 redhat.vscode-yaml
 ritwickdey.liveserver
 samuelcolvin.jinjahtml
+thomas-baumgaertner.vcl
 yzhang.markdown-all-in-one

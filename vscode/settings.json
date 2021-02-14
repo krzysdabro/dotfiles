@@ -66,6 +66,11 @@
   "python.disableInstallationCheck": false,
   "python.showStartPage": false,
 
+  // VCL
+  "[vcl]": {
+    "editor.tabSize": 4
+  },
+
   // YAML
   "yaml.customTags": [
     "!vault"
