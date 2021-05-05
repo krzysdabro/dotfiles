@@ -60,13 +60,13 @@ install_vs_code() {
 
   while read extid; do
     code --install-extension $extid > /dev/null
-  done < vscode/extensions.txt
+  done < ${DOTFILES}/vscode/extensions.txt
 }
 
 ########################################
 # Updating software and installing XCode
 ########################################
-if [[ ! "$OSTYPE" =~ ^darwin ]]; then
+if [[ "$OSTYPE" =~ ^darwin ]]; then
   sudo softwareupdate -ia
   xcode-select --install
   ${DOTFILES}/macos.sh
