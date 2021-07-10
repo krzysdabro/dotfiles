@@ -11,23 +11,25 @@
   "workbench.colorTheme": "Nord",
 
   // SCM
-  "diffEditor.ignoreTrimWhitespace": false,
   "git.confirmSync": false,
   "git.countBadge": "tracked",
   "scm.countBadge": "focused",
 
-  // Other settings
-  "dotfiles.repository": "krzysdabro/dotfiles",
-  "extensions.ignoreRecommendations": true,
-
-
+  // Terminal
+  "terminal.external.osxExec": "iTerm2.app",
+  "terminal.integrated.tabs.enabled": true,
+  "terminal.integrated.profiles.osx": {
+    "zsh": {
+      "path": "zsh",
+      "icon": "terminal"
+    }
+  },
+  "terminal.integrated.defaultProfile.osx": "zsh",
 
   // File associations
   "files.associations": {
     "Brewfile": "ruby"
   },
-
-
 
   // C/C++
   "[c]": {
@@ -50,6 +52,8 @@
   "go.formatTool": "gofmt",
   "go.lintOnSave": "file",
   "go.useLanguageServer": true,
+  "go.coverOnTestPackage": true,
+  "go.toolsManagement.autoUpdate": true,
   "gopls": {
     "codelenses": {
       "generate": false,
@@ -78,9 +82,17 @@
   "yaml.format.singleQuote": true,
   "yaml.validate": false,
 
-
-
   // Discord
   "discord.enabled": false,
-  "discord.workspaceElapsedTime": true
+  "discord.workspaceElapsedTime": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+
+  // GitLens
+  "gitlens.codeLens.enabled": false,
+  "gitlens.statusBar.enabled": false,
+
+  // Other settings
+  "dotfiles.repository": "krzysdabro/dotfiles",
+  "extensions.ignoreRecommendations": true,
+  "redhat.telemetry.enabled": false
 }

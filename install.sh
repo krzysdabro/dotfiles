@@ -21,6 +21,9 @@ is_installed() {
   if which $1 &> /dev/null; then
     return 0
   fi
+  if [[ "$OSTYPE" =~ ^darwin && -d /Applications/$1 ]]; then
+    return 0
+  fi
   return 1
 }
 
@@ -63,12 +66,18 @@ install_vs_code() {
   done < ${DOTFILES}/vscode/extensions.txt
 }
 
+install_iterm() {
+  arrow "iTerm"
+
+  link "${DOTFILES}/iTerm2.plist" "${HOME}/.config/iTerm2/com.googlecode.iterm2.plist"
+}
+
 ########################################
-# Updating software and installing XCode
+# Update software and install XCode
 ########################################
 if [[ "$OSTYPE" =~ ^darwin ]]; then
   sudo softwareupdate -ia
-  xcode-select --install
+  [[ ! -d /Library/Developer/CommandLineTools ]] && xcode-select --install
   ${DOTFILES}/macos.sh
 fi
 
@@ -80,3 +89,4 @@ is_installed git && install_git
 is_installed zsh && install_zsh
 is_installed nvim && install_nvim
 is_installed code && install_vs_code
+is_installed iTerm.app && install_iterm

@@ -8,12 +8,7 @@ myip() {
   curl https://ipinfo.io/ip
 }
 
-# Run container with tools
-docker-tools() {
-  docker run -itv "$HOME:/root" --network host -w "${PWD/$HOME//root}" --rm krzysdabro/tools:latest
-}
-
 # Search through history
-function hs() {
+hs() {
   history 0 | grep "$(echo $@)" | tail -20
 }

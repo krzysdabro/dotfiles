@@ -22,16 +22,18 @@ __git_ps1() {
   echo " [%F{$_color}${_branch##refs/heads/}%f $_status]"
 }
 
+__terraform_ps1() {
+  [[ ! -d .terraform || ! -f .terraform/environment ]] && exit
+  workspace=$(cat .terraform/environment)
+
+  echo " [%F{magenta}${workspace}%f]"
+}
+
 if [[ "$SSH_CONNECTION" != "" ]]; then
   __color_ps1="yellow"
 elif [[ -f /.dockerenv ]]; then
   __color_ps1="cyan"
 fi
 
-if [[ ! ("$OSTYPE" =~ ^darwin || -f /.dockerenv) ]]; then
-  RPS1="\$(__git_ps1)"
-else
-  RPS1=""
-fi
-
+RPS1="\$(__terraform_ps1)\$(__git_ps1)"
 PS1="[%F{${__color_ps1:-green}}%n@%m%f %F{blue}%~%f] "

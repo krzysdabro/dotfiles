@@ -1,10 +1,12 @@
 arcticicestudio.nord-visual-studio-code
+eamodio.gitlens
 golang.go
 icrawl.discord-vscode
 mattyjones.vscode-tickscript
 ms-python.python
 ms-vscode-remote.remote-containers
 ms-vscode.cpptools
+ms-vsliveshare.vsliveshare
 redhat.vscode-yaml
 ritwickdey.liveserver
 samuelcolvin.jinjahtml

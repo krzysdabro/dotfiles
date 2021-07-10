@@ -8,5 +8,13 @@
   {
     "key": "alt+c",
     "command": "-markdown.extension.checkTaskList"
+  },
+  {
+    "key": "alt+o",
+    "command": "-C_Cpp.SwitchHeaderSource"
+  },
+  {
+    "key": "shift+alt+o",
+    "command": "-editor.action.organizeImports"
   }
 ]

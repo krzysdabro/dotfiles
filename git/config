@@ -4,18 +4,19 @@
   d  = diff --patch-with-stat
   dc = diff --patch-with-stat --cached
   l  = log --oneline
+  m  = merge --ff --squash
   s  = status -sb
   fpush = push --force-with-lease
   purge-branches = "!git branch --merged | egrep -v '(\\*|master|main)' | xargs -n 1 git branch -d && git fetch --prune"
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean    = git-lfs clean -- %f
+  smudge   = git-lfs smudge -- %f
+  process  = git-lfs filter-process
+  required = true
 
 [http]
-	cookiefile = ~/.gitcookies
+  cookiefile = ~/.gitcookies
 
 [url "git@github.com:"]
   pushInsteadOf = "https://github.com/"
