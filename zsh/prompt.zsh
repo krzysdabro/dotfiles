@@ -22,6 +22,12 @@ __git_ps1() {
   echo " [%F{$_color}${_branch##refs/heads/}%f $_status]"
 }
 
+__aws_ps1() {
+  [[ -z "${AWS_PROFILE}" ]] && exit
+
+  echo " [%F{yellow}${AWS_PROFILE}%f]"
+}
+
 __terraform_ps1() {
   [[ ! -d .terraform || ! -f .terraform/environment ]] && exit
   workspace=$(cat .terraform/environment)
@@ -35,5 +41,5 @@ elif [[ -f /.dockerenv ]]; then
   __color_ps1="cyan"
 fi
 
-RPS1="\$(__terraform_ps1)\$(__git_ps1)"
+RPS1="\$(__aws_ps1)\$(__terraform_ps1)\$(__git_ps1)"
 PS1="[%F{${__color_ps1:-green}}%n@%m%f %F{blue}%~%f] "
