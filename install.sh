@@ -1,14 +1,21 @@
 #!/bin/bash
 set -euo pipefail
 
-C_YELLOW="\e[0;33m"
+C_GREEN="\e[0;32m"
 C_BLUE="\e[0;34m"
+C_BOLD="\e[1m"
 C_RESET="\e[0m"
 
-DOTFILES=`dirname $(realpath $0)`
-
 arrow() {
-  printf "${C_YELLOW}=>${C_RESET}  $@\n"
+  printf "${C_BOLD}${C_BLUE}==>${C_RESET} ${C_BOLD}$@${C_RESET}\n"
+}
+
+installing_dotfiles() {
+  printf "Installing dotfiles for ${C_GREEN}$@${C_RESET}\n"
+}
+
+realpath() {
+  [[ $1 == /* ]] && echo "$1" || echo "${PWD}/${1#./}"
 }
 
 link() {
@@ -21,30 +28,42 @@ is_installed() {
   if which $1 &> /dev/null; then
     return 0
   fi
-  if [[ "$OSTYPE" =~ ^darwin && -d /Applications/$1 ]]; then
+  if [[ -d /Applications/$1 || -d ${HOME}/Applications/$1 ]]; then
     return 0
   fi
   return 1
 }
 
+DOTFILES=`dirname $(realpath "$0")`
+
+# Check if script runs on MacOS
+if [[ "${OSTYPE}" =~ ^darwin ]]; then
+  IS_DARWIN=1
+fi
+
+# Check if script runs on ARM architecture
+if [[ "$(/usr/bin/uname -m)" == "arm64" ]]; then
+  IS_ARM=1
+fi
+
 #########################
 # Setup install functions
 #########################
 install_git() {
-  arrow "Git"
+  installing_dotfiles "Git"
 
   link "${DOTFILES}/git" "${HOME}/.config/git"
 }
 
 install_zsh() {
-  arrow "Zsh"
+  installing_dotfiles "Zsh"
 
   link "${DOTFILES}/.zshrc" "${HOME}/.zshrc"
   link "${DOTFILES}/zsh" "${HOME}/.zsh"
 }
 
 install_nvim() {
-  arrow "Neovim"
+  installing_dotfiles "Neovim"
 
   link "${DOTFILES}/nvim" "${HOME}/.config/nvim"
   curl -sLo "${HOME}/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
@@ -52,9 +71,9 @@ install_nvim() {
 }
 
 install_vs_code() {
-  arrow "Visual Studio Code"
+  installing_dotfiles "Visual Studio Code"
 
-  if [[ "$OSTYPE" =~ ^darwin ]]; then
+  if [[ -n "${IS_DARWIN-}" ]]; then
     CODE_PATH="${HOME}/Library/Application Support/Code/User"
   else
     CODE_PATH="${HOME}/.config/Code/User"
@@ -67,17 +86,29 @@ install_vs_code() {
 }
 
 install_iterm() {
-  arrow "iTerm"
+  installing_dotfiles "iTerm"
 
   link "${DOTFILES}/iTerm2.plist" "${HOME}/.config/iTerm2/com.googlecode.iterm2.plist"
 }
 
 ########################################
-# Update software and install XCode
+# MacOS specific operations
 ########################################
-if [[ "$OSTYPE" =~ ^darwin ]]; then
+if [[ -n "${IS_DARWIN-}" ]]; then
+  if ! is_installed brew; then
+    arrow "Install homebrew"
+    bash -c "$(curl -fsSl https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+
+  arrow "Run homebrew"
+  brew bundle --file=${DOTFILES}/Brewfile
+
+  arrow "Install updates and developer tools"
   sudo softwareupdate -ia
+  [[ -n "${IS_ARM-}" ]] && sudo softwareupdate --install-rosetta
   [[ ! -d /Library/Developer/CommandLineTools ]] && xcode-select --install
+
+  arrow "Install MacOS settings"
   ${DOTFILES}/macos.sh
 fi
 
@@ -85,6 +116,8 @@ fi
 ##################
 # Install dotfiles
 ##################
+arrow "Install dotfiles"
+
 is_installed git && install_git
 is_installed zsh && install_zsh
 is_installed nvim && install_nvim

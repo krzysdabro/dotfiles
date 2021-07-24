@@ -7,7 +7,7 @@ alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 
-if [[ "$OSTYPE" =~ ^darwin ]]; then
+if [[ -n "${IS_DARWIN-}" ]]; then
   alias ls="ls -G"
   alias ll="ls -lah"
 else
@@ -16,7 +16,7 @@ else
 fi
 
 # Other
-if [[ ! "$OSTYPE" =~ ^darwin ]]; then
+if [[ -z "${IS_DARWIN-}" ]]; then
   alias ip="ip -br -c"
 fi
 
