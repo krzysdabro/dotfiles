@@ -3,12 +3,14 @@
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.minimap.enabled": false,
+  "editor.bracketPairColorization.enabled": true,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "workbench.colorTheme": "Nord",
+  "workbench.editor.untitled.experimentalLanguageDetection": true,
 
   // SCM
   "git.confirmSync": false,
@@ -62,6 +64,13 @@
       "semanticTokens": true
     }
   },
+
+  // JavsScript
+  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "javascript.inlayHints.variableTypes.enabled": true,
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "javascript.inlayHints.parameterTypes.enabled": true,
+  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
 
   // Python
   "[python]": {

@@ -18,11 +18,8 @@
 [http]
   cookiefile = ~/.gitcookies
 
-[url "git@github.com:"]
-  pushInsteadOf = "https://github.com/"
-
-[url "git@gitlab.tenesys.pl:"]
-  insteadOf = "https://gitlab.tenesys.pl/"
+[init]
+	defaultBranch = main
 
 [pull]
   rebase = true
@@ -31,6 +28,12 @@
   name       = Krzysztof Dąbrowski
   email      = krzysdabro@live.com
   signingkey = C780EDC8C8805BD2
+
+[url "git@github.com:"]
+  pushInsteadOf = "https://github.com/"
+
+[url "git@gitlab.tenesys.pl:"]
+  insteadOf = "https://gitlab.tenesys.pl/"
 
 [includeIf "gitdir:~/work/"]
   path = ~/.config/git/config.work

@@ -13,12 +13,6 @@ if [[ "$(/usr/bin/uname -m)" == "arm64" ]]; then
   IS_ARM=1
 fi
 
-# Check if Go is installed
-if which go &> /dev/null; then
-  export GOPATH=$HOME/go
-  export PATH=$PATH:$GOPATH/bin
-fi
-
 if [[ -n "${IS_DARWIN-}" ]]; then
   export FPATH=/usr/local/share/zsh-completions:$FPATH
   export LSCOLORS="ExGxFxdxCxdxDahbadacec"
@@ -28,6 +22,12 @@ if [[ -n "${IS_DARWIN-}" ]]; then
   if [[ -n "${IS_ARM-}" ]]; then
     export PATH=$PATH:/opt/homebrew/bin
   fi
+fi
+
+# Check if Go is installed
+if which go &> /dev/null; then
+  export GOPATH=$HOME/go
+  export PATH=$PATH:$GOPATH/bin
 fi
 
 for file in $ZSH/*.zsh; do
