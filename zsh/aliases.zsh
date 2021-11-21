@@ -1,4 +1,5 @@
 alias reload=". ~/.zshrc"
+alias incognito=" unset HISTFILE"
 
 alias vi="nvim"
 alias vim="nvim"

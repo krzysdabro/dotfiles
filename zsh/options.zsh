@@ -8,6 +8,7 @@ setopt prompt_subst
 setopt append_history
 setopt inc_append_history
 setopt hist_ignore_dups
+setopt hist_ignore_space
 
 HISTFILE=~/.history
 HISTSIZE=1000
