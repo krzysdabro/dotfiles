@@ -92,11 +92,6 @@
   "yaml.format.singleQuote": true,
   "yaml.validate": false,
 
-  // Discord
-  "discord.enabled": false,
-  "discord.workspaceElapsedTime": true,
-  "diffEditor.ignoreTrimWhitespace": false,
-
   // GitLens
   "gitlens.codeLens.enabled": false,
   "gitlens.statusBar.enabled": false,
