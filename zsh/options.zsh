@@ -16,11 +16,12 @@ SAVEHIST=2000
 
 # Key bindings
 bindkey -e
-bindkey "\e[H"     beginning-of-line        # [Home] - move cursor to beginning of line
-bindkey "\e[F"     end-of-line              # [End] - move cursor to end of line
-bindkey "\e\e[D"   backward-word            # [Alt-LeftArrow] - move cursor one word backward
+bindkey "\e[H"     beginning-of-line               # [Home] - move cursor to beginning of line
+bindkey "\e[F"     end-of-line                     # [End] - move cursor to end of line
+bindkey "\e\e[D"   backward-word                   # [Alt-LeftArrow] - move cursor one word backward
 bindkey "\e[1;3D"  backward-word
-bindkey "\e\e[C"   forward-word             # [Alt-RightArrow] - move cursor one word forward
+bindkey "\e\e[C"   forward-word                    # [Alt-RightArrow] - move cursor one word forward
 bindkey "\e[1;3C"  forward-word
-bindkey "\e[3~"    delete-char              # [Delete] - delete character
-bindkey "\e[Z"     reverse-menu-complete    # [Shift-Tab] - move through the completion menu backwards
+bindkey "\e[3~"    delete-char                     # [Delete] - delete character
+bindkey "^I"       expand-or-complete-with-dots    # [Tab] - complete with dots
+bindkey "\e[Z"     reverse-menu-complete           # [Shift-Tab] - move through the completion menu backwards

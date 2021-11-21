@@ -1,26 +1,34 @@
-# match uppercase from lowercase
+# Completion waiting dots
+expand-or-complete-with-dots() {
+  echo -en "\e[0;90m...\e[0m"
+  zle expand-or-complete
+  zle redisplay
+}
+zle -N expand-or-complete-with-dots
+
+# Match uppercase from lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-# pasting with tabs doesn't perform completion
+# Pasting with tabs doesn't perform completion
 zstyle ':completion:*' insert-tab pending
 
-# completion with menu
+# Completion with menu
 zstyle ':completion:*' menu select
 
-# group completions
+# Group completions
 zstyle ':completion:*' group true
 zstyle ':completion:*' group-name ''
 
-# colors in menu
+# Colors in menu
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-# prompt for long lists
+# Prompt for long lists
 zstyle ':completion:*' select-prompt %SLine %l \(%p\)%s
 
-# ignore zsh internal functions
+# Ignore zsh internal functions
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
-# find new executables in path
+# Find new executables in path
 zstyle ':completion:*' rehash true
 
 # SSH completion
