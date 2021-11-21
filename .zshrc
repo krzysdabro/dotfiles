@@ -13,21 +13,27 @@ if [[ "$(/usr/bin/uname -m)" == "arm64" ]]; then
   IS_ARM=1
 fi
 
-if [[ -n "${IS_DARWIN-}" ]]; then
-  export FPATH=/usr/local/share/zsh-completions:$FPATH
-  export LSCOLORS="ExGxFxdxCxdxDahbadacec"
-  export LC_ALL=en_US.UTF-8
-  export LANG=en_US.UTF-8
+# Add Homebrew to PATH on ARM architecture
+if [[ -n "${IS_ARM-}" && -d /opt/homebrew ]]; then
+  export PATH=$PATH:/opt/homebrew/bin
+fi
 
-  if [[ -n "${IS_ARM-}" ]]; then
-    export PATH=$PATH:/opt/homebrew/bin
-  fi
+# Check if Homebrew is installed
+if which brew &> /dev/null; then
+  export HOMEBREW_PREFIX=$(brew --prefix)
+  export FPATH=$FPATH:$HOMEBREW_PREFIX/share/zsh/site-functions
 fi
 
 # Check if Go is installed
 if which go &> /dev/null; then
   export GOPATH=$HOME/go
   export PATH=$PATH:$GOPATH/bin
+fi
+
+if [[ -n "${IS_DARWIN-}" ]]; then
+  export LSCOLORS="ExGxFxdxCxdxDahbadacec"
+  export LC_ALL=en_US.UTF-8
+  export LANG=en_US.UTF-8
 fi
 
 for file in $ZSH/*.zsh; do
