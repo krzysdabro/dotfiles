@@ -9,7 +9,7 @@
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
-  "workbench.colorTheme": "Nord",
+  "workbench.colorTheme": "Tokyo Night Storm",
   "workbench.editor.untitled.experimentalLanguageDetection": true,
 
   // SCM
@@ -20,6 +20,7 @@
   // Terminal
   "terminal.external.osxExec": "iTerm2.app",
   "terminal.integrated.tabs.enabled": true,
+  "terminal.integrated.persistentSessionReviveProcess": true,
   "terminal.integrated.profiles.osx": {
     "zsh": {
       "path": "zsh",
