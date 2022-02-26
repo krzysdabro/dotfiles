@@ -42,3 +42,7 @@ zstyle ':completion:*:(ssh|scp|rsync):*:users' list-colors '=*=1;32'
 
 autoload -Uz compinit
 compinit
+
+if which kubectl &> /dev/null; then
+  source <(kubectl completion zsh)
+fi
