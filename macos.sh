@@ -25,6 +25,9 @@ defaults write com.apple.screencapture disable-shadow -bool true
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 
+# Control strip: show full control strip
+defaults write com.apple.touchbar.agent PresentationModeGlobal -string fullControlStrip
+
 # Control strip: set items
 defaults write com.apple.controlstrip FullCustomized -array \
   "com.apple.system.group.brightness" \
@@ -132,6 +135,9 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 # iTerm2: set custom configuration folder
 defaults write com.googlecode.iterm2 PrefsCustomFolder "${HOME}/.config/iTerm2"
 
+# iTerm2: enable loading configuration from custom folder
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+
 # Amphetamine: use cup icon
 defaults write com.if.Amphetamine "Icon Style" -int 6
 
@@ -143,5 +149,6 @@ defaults write com.if.Amphetamine "Lower Icon Opacity" -bool true
 # Restart applications
 ########################
 
+killall "ControlStrip"
 killall "Dock"
 killall "Finder"
