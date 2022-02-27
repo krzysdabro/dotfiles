@@ -102,6 +102,11 @@ if [[ -n "${IS_DARWIN-}" ]]; then
   arrow "Run homebrew"
   brew bundle --file=${DOTFILES}/Brewfile
 
+  # https://support.1password.com/could-not-connect/#for-all-browsers
+  GOOGLE_APP_SUPPORT=${HOME}/Library/Application\ Support/Google
+  mkdir -p ${GOOGLE_APP_SUPPORT}/Chrome/NativeMessagingHosts
+  ln -s ${GOOGLE_APP_SUPPORT}/Chrome/NativeMessagingHosts/ ${GOOGLE_APP_SUPPORT}/Chrome\ Dev/NativeMessagingHosts
+
   arrow "Install updates and developer tools"
   sudo softwareupdate -ia
   [[ -n "${IS_ARM-}" ]] && sudo softwareupdate --install-rosetta
