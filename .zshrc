@@ -15,13 +15,14 @@ fi
 
 # Add Homebrew to PATH on ARM architecture
 if [[ -n "${IS_ARM-}" && -d /opt/homebrew ]]; then
-  export PATH=$PATH:/opt/homebrew/bin
+  export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
 fi
 
 # Check if Homebrew is installed
 if which brew &> /dev/null; then
   export HOMEBREW_PREFIX=$(brew --prefix)
-  export FPATH=$FPATH:$HOMEBREW_PREFIX/share/zsh/site-functions
+  export MANPATH=$HOMEBREW_PREFIX/share/man:$MANPATH
+  export FPATH=$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH
 fi
 
 # Check if Go is installed
