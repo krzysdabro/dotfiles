@@ -116,6 +116,12 @@ defaults write com.apple.dock mru-spaces -bool false
 # Dock: enable the Launchpad gesture
 defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 
+# Dock: minimise windows using scale effect
+defaults write com.apple.dock mineffect -string scale
+
+# Dock: minimise windows into application icon
+defaults write com.apple.dock minimize-to-application -bool true
+
 
 ########################
 # Messages

@@ -1,18 +1,12 @@
-local function map(mode, lhs, rhs, opts)
-  local options = {noremap = true}
-  if opts then options = vim.tbl_extend('force', options, opts) end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
+vim.keymap.set('n', '<C-h>', '<C-W>h', { desc = 'jump to the window on the left' })
+vim.keymap.set('n', '<C-j>', '<C-W>j', { desc = 'jump to the window below' })
+vim.keymap.set('n', '<C-k>', '<C-W>k', { desc = 'jump to the window above' })
+vim.keymap.set('n', '<C-l>', '<C-W>h', { desc = 'jump to the window on the right' })
+vim.keymap.set('n', '<M-h>', '<C-W>H', { desc = 'move the window to the left' })
+vim.keymap.set('n', '<M-j>', '<C-W>J', { desc = 'move the window below' })
+vim.keymap.set('n', '<M-k>', '<C-W>K', { desc = 'move the window above' })
+vim.keymap.set('n', '<M-l>', '<C-W>H', { desc = 'move the window to the right' })
 
-map('n', '<C-h>', '<C-W>h')
-map('n', '<C-j>', '<C-W>j')
-map('n', '<C-k>', '<C-W>k')
-map('n', '<C-l>', '<C-W>l')
-map('n', '<M-h>', '<C-w>H')
-map('n', '<M-j>', '<C-w>J')
-map('n', '<M-k>', '<C-w>K')
-map('n', '<M-l>', '<C-w>L')
+vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { desc = 'toogle file explorer' })
 
-map('n', '<C-n>', ':NvimTreeToggle<CR>')
-
-map('t', '<Esc><Esc>', '<C-\\><C-n>')
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'exit terminal' })

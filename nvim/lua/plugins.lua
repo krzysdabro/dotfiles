@@ -57,15 +57,15 @@ return require('packer').startup({function()
         options = {
           icons_enabled = false,
           theme = 'auto',
-          component_separators = { left = '', right = ''},
-          section_separators = { left = '', right = ''},
-          disabled_filetypes = {'NvimTree'},
+          component_separators = { left = '', right = '' },
+          section_separators = { left = '', right = '' },
+          disabled_filetypes = { 'NvimTree' },
           always_divide_middle = true,
         },
         sections = {
           lualine_a = { 'mode' },
           lualine_b = {
-            {'filename', file_status = false }
+            { 'filename', file_status = false }
           },
           lualine_c = {},
           lualine_x = { 'branch', 'fileformat', 'encoding', 'filetype' },
