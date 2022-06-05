@@ -97,6 +97,7 @@ if [[ -n "${IS_DARWIN-}" ]]; then
   if ! is_installed brew; then
     arrow "Install homebrew"
     bash -c "$(curl -fsSl https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    [[ -n "${IS_ARM-}" ]] && export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
   fi
 
   arrow "Run homebrew"
