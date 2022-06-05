@@ -10,7 +10,6 @@
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "workbench.colorTheme": "Tokyo Night Storm",
-  "workbench.editor.untitled.experimentalLanguageDetection": true,
 
   // SCM
   "git.confirmSync": false,

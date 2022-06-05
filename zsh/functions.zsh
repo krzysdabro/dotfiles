@@ -20,5 +20,5 @@ ssm() {
 
 # List EC2 instances
 instances() {
-  aws ec2 describe-instances --output=json ${@} | jq -r '.Reservations[].Instances[] | [(.Tags[] | select(.Key == "Name") | .Value), .InstanceId, .State.Name, .PrivateIpAddress] | @tsv' | sort | column -t
+  aws ec2 describe-instances --output=json ${@} | jq -r '.Reservations[].Instances[] | [(.Tags[] | select(.Key == "Name") | .Value), .InstanceId, .State.Name, .InstanceType, .PrivateIpAddress] | @tsv' | sort | column -t
 }
