@@ -46,6 +46,9 @@ defaults write com.apple.controlstrip FullCustomized -array \
 # Menu: show WiFi
 defaults write com.apple.controlcenter "NSStatusItem Visible WiFi" -bool true
 
+# Menu: show Sound
+defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -bool true
+
 # Menu: hide Bluetooth
 defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" -bool false
 
@@ -55,6 +58,12 @@ defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Batter
 
 # Menu: show the Now Playing
 defaults write com.apple.controlcenter "NSStatusItem Visible NowPlaying" -bool true
+
+# Menu: set item positions
+defaults write com.apple.controlcenter "NSStatusItem Preferred Position BentoBox" -int 83
+defaults write com.apple.controlcenter "NSStatusItem Preferred Position WiFi" -int 115
+defaults write com.apple.controlcenter "NSStatusItem Preferred Position Battery" -int 151
+defaults write com.apple.controlcenter "NSStatusItem Preferred Position Sound" -int 254
 
 # Menu: display seconds in clock
 defaults write com.apple.menuextra.clock ShowSeconds -bool true
@@ -85,6 +94,18 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 # Finder: keep folders on top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# Finder: remove items from Trash after 30 days
+defaults write com.apple.finder FXRemoveOldTrashItems -bool true
+
+# Finder: set default path to the home dir
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
+
+# Finder: hide recent tags in the sidebar
+defaults write com.apple.finder ShowRecentTags -bool false
+
+# Finder: show path bar
+defaults write com.apple.finder ShowPathbar -bool true
 
 # Finder: avoid creating .DS_Store files on network or USB volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
