@@ -13,6 +13,7 @@
 
   // SCM
   "git.confirmSync": false,
+  "git.mergeEditor": true,
   "git.countBadge": "tracked",
   "scm.countBadge": "focused",
 
@@ -27,6 +28,7 @@
   },
   "terminal.integrated.tabs.enabled": true,
   "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.shellIntegration.enabled": true,
 
   // File associations
   "files.associations": {
@@ -56,6 +58,9 @@
   "go.useLanguageServer": true,
   "go.coverOnTestPackage": true,
   "go.toolsManagement.autoUpdate": true,
+  "go.inlayHints.compositeLiteralFields": true,
+  "go.inlayHints.parameterNames": true,
+  "go.inlayHints.functionTypeParameters": true,
   "gopls": {
     "codelenses": {
       "generate": false,
@@ -66,18 +71,16 @@
   },
 
   // JavsScript
-  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "javascript.inlayHints.variableTypes.enabled": true,
-  "javascript.inlayHints.parameterNames.enabled": "all",
-  "javascript.inlayHints.parameterTypes.enabled": true,
-  "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+  //"javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  //"javascript.inlayHints.variableTypes.enabled": true,
+  //"javascript.inlayHints.parameterNames.enabled": "all",
+  //"javascript.inlayHints.parameterTypes.enabled": true,
+  //"javascript.inlayHints.propertyDeclarationTypes.enabled": true,
 
   // Python
   "[python]": {
     "editor.tabSize": 4
   },
-  "python.disableInstallationCheck": false,
-  "python.showStartPage": false,
 
   // VCL
   "[vcl]": {
@@ -98,5 +101,6 @@
   // Other settings
   "dotfiles.repository": "krzysdabro/dotfiles",
   "extensions.ignoreRecommendations": true,
-  "redhat.telemetry.enabled": false
+  "liveServer.settings.donotVerifyTags": true,
+  "redhat.telemetry.enabled": false,
 }
