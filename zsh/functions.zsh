@@ -79,5 +79,15 @@ tf-gitlab-init() {
     -backend-config="lock_method=POST" \
     -backend-config="unlock_method=DELETE" \
     -backend-config="retry_wait_min=5" \
+    -input=false \
     -reconfigure
+}
+
+backup() {
+  dir=${1:-$PWD}
+  repo=$HOME/.restic_repository
+
+  [[ "$(realpath $dir)" =~ "^$HOME/work" && -f "$HOME/work/.restic_repository" ]] && repo=$HOME/work/.restic_repository
+
+  restic --repository-file=$repo backup "$1" --exclude-file=$HOME/.restic_exclude
 }

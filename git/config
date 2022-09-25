@@ -1,5 +1,6 @@
 [alias]
   a  = add
+  c  = commit
   co = checkout
   d  = diff --patch-with-stat
   dc = diff --patch-with-stat --cached
@@ -25,6 +26,9 @@
   rebase  = true
   twohead = ort
 
+[rebase]
+  autosquash = true
+
 [user]
   name       = Krzysztof Dąbrowski
   email      = krzysdabro@live.com
@@ -32,9 +36,6 @@
 
 [url "git@github.com:"]
   pushInsteadOf = "https://github.com/"
-
-[url "git@gitlab.tenesys.pl:"]
-  insteadOf = "https://gitlab.tenesys.pl/"
 
 [includeIf "gitdir:~/work/"]
   path = ~/.config/git/config.work

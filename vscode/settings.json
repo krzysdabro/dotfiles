@@ -16,6 +16,7 @@
   "git.mergeEditor": true,
   "git.countBadge": "tracked",
   "scm.countBadge": "focused",
+  "diffEditor.ignoreTrimWhitespace": false,
 
   // Terminal
   "terminal.external.osxExec": "iTerm2.app",
