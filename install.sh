@@ -94,10 +94,15 @@ install_iterm() {
 # MacOS specific operations
 ########################################
 if [[ -n "${IS_DARWIN-}" ]]; then
+  arrow "Install updates and developer tools"
+  sudo softwareupdate -ia
+  [[ ! -d /Library/Developer/CommandLineTools ]] && xcode-select --install
+  [[ -n "${IS_ARM-}" ]] && sudo softwareupdate --install-rosetta
+
+  [[ -n "${IS_ARM-}" ]] && export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
   if ! is_installed brew; then
     arrow "Install homebrew"
     bash -c "$(curl -fsSl https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    [[ -n "${IS_ARM-}" ]] && export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
   fi
 
   arrow "Run homebrew"
@@ -105,13 +110,8 @@ if [[ -n "${IS_DARWIN-}" ]]; then
 
   # https://support.1password.com/could-not-connect/#for-all-browsers
   GOOGLE_APP_SUPPORT="${HOME}/Library/Application Support/Google"
-  mkdir -p "${GOOGLE_APP_SUPPORT}/Chrome/NativeMessagingHosts"
-  ln -s "${GOOGLE_APP_SUPPORT}/Chrome/NativeMessagingHosts" "${GOOGLE_APP_SUPPORT}/Chrome Dev/NativeMessagingHosts"
-
-  arrow "Install updates and developer tools"
-  sudo softwareupdate -ia
-  [[ -n "${IS_ARM-}" ]] && sudo softwareupdate --install-rosetta
-  [[ ! -d /Library/Developer/CommandLineTools ]] && xcode-select --install
+  mkdir -p "${GOOGLE_APP_SUPPORT}/Chrome/NativeMessagingHosts" "${GOOGLE_APP_SUPPORT}/Chrome Dev/"
+  link "${GOOGLE_APP_SUPPORT}/Chrome/NativeMessagingHosts" "${GOOGLE_APP_SUPPORT}/Chrome Dev/NativeMessagingHosts"
 
   arrow "Install MacOS settings"
   ${DOTFILES}/macos.sh

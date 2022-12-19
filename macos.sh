@@ -67,6 +67,7 @@ defaults write com.apple.controlcenter "NSStatusItem Preferred Position Sound" -
 
 # Menu: display seconds in clock
 defaults write com.apple.menuextra.clock ShowSeconds -bool true
+defaults write com.apple.menuextra.clock ShowDate -int 2 # Never
 defaults write com.apple.menuextra.clock DateFormat -string "HH:mm:ss"
 
 # Menu: hide the day of the week
