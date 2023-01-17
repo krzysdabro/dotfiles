@@ -41,8 +41,13 @@ zstyle ':completion:*:(ssh|scp|rsync):*:hosts' list-colors '=*-=1;35' '=*=1;34'
 zstyle ':completion:*:(ssh|scp|rsync):*:users' list-colors '=*=1;32'
 
 autoload -Uz compinit
+autoload -U +X bashcompinit && bashcompinit
 compinit
 
 if which kubectl &> /dev/null; then
   source <(kubectl completion zsh)
+fi
+
+if which az &> /dev/null; then
+  source $HOMEBREW_PREFIX/etc/bash_completion.d/az
 fi

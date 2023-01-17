@@ -5,6 +5,7 @@ tap "cloudflare/cloudflare"
 
 brew "ansible"
 brew "awscli"
+brew "azure-cli"
 brew "cloudflared"
 brew "coreutils"
 brew "curl"

@@ -37,5 +37,8 @@
 [url "git@github.com:"]
   pushInsteadOf = "https://github.com/"
 
+[url "git@gitlab.tenesys.pl:"]
+  insteadOf = "https://gitlab.tenesys.pl/"
+
 [includeIf "gitdir:~/work/"]
   path = ~/.config/git/config.work
