@@ -22,6 +22,12 @@
 [init]
 	defaultBranch = main
 
+[commit]
+  gpgsign = true
+
+[tag]
+  gpgsign = true
+
 [pull]
   rebase  = true
   twohead = ort
@@ -29,10 +35,13 @@
 [rebase]
   autosquash = true
 
+[gpg]
+  format = ssh
+
 [user]
   name       = Krzysztof Dąbrowski
   email      = krzysdabro@live.com
-  signingkey = C780EDC8C8805BD2
+  signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOYHfQTZ8uLW2PXyj5asYnEYict5/Fi00E9xpjPb9f+z"
 
 [url "git@github.com:"]
   pushInsteadOf = "https://github.com/"
@@ -40,5 +49,15 @@
 [url "git@gitlab.tenesys.pl:"]
   insteadOf = "https://gitlab.tenesys.pl/"
 
+[includeIf "gitdir:/Users"]
+  path = ~/.config/git/config.macos
+
 [includeIf "gitdir:~/work/"]
   path = ~/.config/git/config.work
+
+[credential]
+  helper = osxkeychain
+
+[gpg "ssh"]
+  program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+

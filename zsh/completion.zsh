@@ -51,3 +51,7 @@ fi
 if which az &> /dev/null; then
   source $HOMEBREW_PREFIX/etc/bash_completion.d/az
 fi
+
+if which gcloud &> /dev/null; then
+  source "$HOMEBREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+fi

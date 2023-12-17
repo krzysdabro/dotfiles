@@ -9,13 +9,16 @@
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
+  "files.readonlyFromPermissions": true,
   "workbench.colorTheme": "Tokyo Night Storm",
+  "accessibility.dimUnfocused.enabled": true,
 
   // SCM
   "git.confirmSync": false,
   "git.mergeEditor": true,
   "git.countBadge": "tracked",
   "scm.countBadge": "focused",
+  "diffEditor.diffAlgorithm": "advanced",
   "diffEditor.ignoreTrimWhitespace": false,
 
   // Terminal
@@ -55,13 +58,9 @@
   },
   "go.buildOnSave": "off",
   "go.formatTool": "gofmt",
-  "go.lintOnSave": "file",
   "go.useLanguageServer": true,
   "go.coverOnTestPackage": true,
   "go.toolsManagement.autoUpdate": true,
-  "go.inlayHints.compositeLiteralFields": true,
-  "go.inlayHints.parameterNames": true,
-  "go.inlayHints.functionTypeParameters": true,
   "gopls": {
     "codelenses": {
       "generate": false,
@@ -80,7 +79,8 @@
 
   // Python
   "[python]": {
-    "editor.tabSize": 4
+    "editor.tabSize": 4,
+    "editor.formatOnType": true
   },
 
   // VCL
@@ -104,4 +104,8 @@
   "extensions.ignoreRecommendations": true,
   "liveServer.settings.donotVerifyTags": true,
   "redhat.telemetry.enabled": false,
+  "markdown.extension.toc.updateOnSave": false,
+  "cSpell.enableFiletypes": [
+    "!plaintext"
+  ],
 }
