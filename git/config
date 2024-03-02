@@ -4,10 +4,12 @@
   co = checkout
   d  = diff --patch-with-stat
   dc = diff --patch-with-stat --cached
+  dw = diff --patch-with-stat --word-diff
   l  = log --oneline
   m  = merge --ff --squash
   s  = status -sb
   fpush = push --force-with-lease
+  staash = stash --all
   purge-branches = "!git branch --merged | egrep -v '(\\*|master|main)' | xargs -n 1 git branch -d && git fetch --prune"
 
 [filter "lfs"]
@@ -21,6 +23,9 @@
 
 [init]
 	defaultBranch = main
+
+[fetch]
+  writeCommitGraph = true
 
 [commit]
   gpgsign = true
@@ -38,6 +43,12 @@
 [gpg]
   format = ssh
 
+[gpg "ssh"]
+  program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+
+[credential]
+  helper = osxkeychain
+
 [user]
   name       = Krzysztof Dąbrowski
   email      = krzysdabro@live.com
@@ -45,19 +56,3 @@
 
 [url "git@github.com:"]
   pushInsteadOf = "https://github.com/"
-
-[url "git@gitlab.tenesys.pl:"]
-  insteadOf = "https://gitlab.tenesys.pl/"
-
-[includeIf "gitdir:/Users"]
-  path = ~/.config/git/config.macos
-
-[includeIf "gitdir:~/work/"]
-  path = ~/.config/git/config.work
-
-[credential]
-  helper = osxkeychain
-
-[gpg "ssh"]
-  program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
-

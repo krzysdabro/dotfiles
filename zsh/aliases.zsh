@@ -12,6 +12,8 @@ alias fgrep="fgrep --color=auto"
 alias rsync="rsync -P"
 alias k="kubectl"
 
+alias erase="shred --remove"
+
 if [[ -n "${IS_DARWIN-}" ]]; then
   alias ls="ls -G"
   alias ll="ls -lah"
