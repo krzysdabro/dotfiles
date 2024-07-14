@@ -18,6 +18,7 @@
   "git.mergeEditor": true,
   "git.countBadge": "tracked",
   "scm.countBadge": "focused",
+  "scm.experimental.showHistoryGraph": true,
   "diffEditor.diffAlgorithm": "advanced",
   "diffEditor.ignoreTrimWhitespace": false,
 
@@ -108,4 +109,5 @@
   "cSpell.enableFiletypes": [
     "!plaintext"
   ],
+  "github.copilot.editor.enableAutoCompletions": true,
 }

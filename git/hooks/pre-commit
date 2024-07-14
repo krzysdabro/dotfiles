@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Check for gitleaks
+if [[ -n "$(which gitleaks 2>/dev/null)" ]]; then
+  if ! gitleaks protect --redact=50 -v --staged 2>/dev/null; then
+    echo -e "gitleaks detected a secret in your commit. Please remove it before committing."
+    exit 1
+  fi
+fi
+
+# Try to run local pre-commit hook if it exists
+if [[ ! -e ./.git/hooks/pre-commit ]]; then
+  exit 0
+fi
+
+./.git/hooks/pre-commit "$@"

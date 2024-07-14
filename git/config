@@ -18,6 +18,9 @@
   process  = git-lfs filter-process
   required = true
 
+[core]
+  hooksPath = ~/.config/git/hooks
+
 [http]
   cookiefile = ~/.gitcookies
 
@@ -49,10 +52,11 @@
 [credential]
   helper = osxkeychain
 
-[user]
-  name       = Krzysztof Dąbrowski
-  email      = krzysdabro@live.com
-  signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOYHfQTZ8uLW2PXyj5asYnEYict5/Fi00E9xpjPb9f+z"
-
 [url "git@github.com:"]
   pushInsteadOf = "https://github.com/"
+
+[include]
+  path = ~/.config/git/config.user
+
+[includeIf "gitdir:~/work/"]
+  path = ~/.config/git/config.work
