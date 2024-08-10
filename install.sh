@@ -110,9 +110,9 @@ install_iterm() {
 ########################################
 if [[ -n "${IS_DARWIN-}" ]]; then
   arrow "Install updates and developer tools"
-  sudo softwareupdate -ia
+  sudo softwareupdate -ia --agree-to-license
   [[ ! -d /Library/Developer/CommandLineTools ]] && xcode-select --install
-  [[ -n "${IS_ARM-}" ]] && sudo softwareupdate --install-rosetta
+  [[ -n "${IS_ARM-}" ]] && sudo softwareupdate --install-rosetta --agree-to-license
 
   [[ -n "${IS_ARM-}" ]] && export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
   if ! is_installed brew; then

@@ -25,6 +25,7 @@ defaults write com.apple.screencapture disable-shadow -bool true
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 
+
 # Control strip: show full control strip
 defaults write com.apple.touchbar.agent PresentationModeGlobal -string fullControlStrip
 
@@ -177,6 +178,6 @@ defaults write com.if.Amphetamine "Lower Icon Opacity" -bool true
 # Restart applications
 ########################
 
-killall "ControlStrip"
-killall "Dock"
-killall "Finder"
+for app in "ControlStrip" "Dock" "Finder"; do
+  killall "$app" || true
+done
