@@ -1,6 +1,5 @@
 cask_args appdir: "/Applications"
 
-tap "homebrew/cask-versions"
 tap "cloudflare/cloudflare"
 
 brew "ansible"
