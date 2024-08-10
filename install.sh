@@ -34,6 +34,11 @@ is_installed() {
   return 1
 }
 
+prompt() {
+  read -p "$1: " response
+  echo $response
+}
+
 DOTFILES=`dirname $(realpath "$0")`
 
 # Check if script runs on MacOS
@@ -53,6 +58,16 @@ install_git() {
   installing_dotfiles "Git"
 
   link "${DOTFILES}/git" "${HOME}/.config/git"
+
+  name=$(prompt "Name")
+  email=$(prompt "Email")
+  signingkey=$(prompt "Signing key")
+  cat - <<EOF > "${HOME}/.config/git/config.user"
+[user]
+  name       = $name
+  email      = $email
+  signingkey = $signingkey
+EOF
 }
 
 install_zsh() {
