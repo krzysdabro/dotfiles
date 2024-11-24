@@ -13,6 +13,18 @@
   "workbench.colorTheme": "Tokyo Night Storm",
   "accessibility.dimUnfocused.enabled": true,
 
+  // Explorer
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    ".env": "*.env, .env*",
+    "README*": "AUTHORS, Authors, BACKERS*, Backers*, CHANGELOG*, CITATION*, CODEOWNERS, CODE_OF_CONDUCT*, CONTRIBUTING*, CONTRIBUTORS, COPYING*, CREDITS, Changelog*, Citation*, Code_Of_Conduct*, Codeowners, Contributing*, Contributors, Copying*, Credits, GOVERNANCE.MD, Governance.md, HISTORY.MD, History.md, LICENSE*, License*, MAINTAINERS, Maintainers, README-*, README_*, RELEASE_NOTES*, ROADMAP.MD, Readme-*, Readme_*, Release_Notes*, Roadmap.md, SECURITY.MD, SPONSORS*, Security.md, Sponsors*, authors, backers*, changelog*, citation*, code_of_conduct*, codeowners, contributing*, contributors, copying*, credits, governance.md, history.md, license*, maintainers, readme-*, readme_*, release_notes*, roadmap.md, security.md, sponsors*",
+    "Brewfile": "Brewfile.lock.json",
+    "go.mod": "go.sum",
+    "go.work": "go.work.sum",
+    "*.go": "$(capture)_test.go"
+  },
+
   // SCM
   "git.confirmSync": false,
   "git.mergeEditor": true,
@@ -34,6 +46,7 @@
   "terminal.integrated.tabs.enabled": true,
   "terminal.integrated.scrollback": 10000,
   "terminal.integrated.shellIntegration.enabled": true,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
 
   // File associations
   "files.associations": {
@@ -84,6 +97,15 @@
     "editor.formatOnType": true
   },
 
+  // Terraform
+  "[terraform]": {
+    "editor.formatOnSave": true
+  },
+  "[terraform-vars]": {
+    "editor.formatOnSave": true
+  },
+  "terraform.experimentalFeatures.validateOnSave": true,
+
   // VCL
   "[vcl]": {
     "editor.tabSize": 4
@@ -104,6 +126,7 @@
   "dotfiles.repository": "krzysdabro/dotfiles",
   "extensions.ignoreRecommendations": true,
   "liveServer.settings.donotVerifyTags": true,
+  "liveServer.settings.donotShowInfoMsg": true,
   "redhat.telemetry.enabled": false,
   "markdown.extension.toc.updateOnSave": false,
   "cSpell.enableFiletypes": [

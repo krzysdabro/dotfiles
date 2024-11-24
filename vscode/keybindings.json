@@ -16,5 +16,13 @@
   {
     "key": "shift+alt+o",
     "command": "-editor.action.organizeImports"
+  },
+  {
+    "key": "ctrl+shift+p",
+    "command": "workbench.action.showCommands"
+  },
+  {
+    "key": "shift+cmd+p",
+    "command": "-workbench.action.showCommands"
   }
 ]
