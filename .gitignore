@@ -3,4 +3,3 @@ nvim/plugin
 vscode/*/
 !vscode/snippets/
 git/config.user
-git/config.work
