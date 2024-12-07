@@ -100,7 +100,7 @@ defaults write com.apple.finder _FXSortFoldersFirst -bool true
 defaults write com.apple.finder FXRemoveOldTrashItems -bool true
 
 # Finder: set default path to the home dir
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
 
 # Finder: hide recent tags in the sidebar
 defaults write com.apple.finder ShowRecentTags -bool false
@@ -177,6 +177,6 @@ defaults write com.if.Amphetamine "Lower Icon Opacity" -bool true
 # Restart applications
 ########################
 
-killall "ControlStrip"
+killall "ControlStrip" || true
 killall "Dock"
 killall "Finder"

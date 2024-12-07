@@ -31,6 +31,11 @@ if which go &> /dev/null; then
   export PATH=$PATH:$GOPATH/bin
 fi
 
+# Check if Gem is installed
+if which gem &> /dev/null; then
+  export PATH=$PATH:$(gem environment home)/bin
+fi
+
 if [[ -n "${IS_DARWIN-}" ]]; then
   export LSCOLORS="ExGxFxdxCxdxDahbadacec"
   export LC_ALL=en_US.UTF-8
