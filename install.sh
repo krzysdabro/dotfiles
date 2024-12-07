@@ -90,6 +90,12 @@ install_iterm() {
   link "${DOTFILES}/iTerm2.plist" "${HOME}/.config/iTerm2/com.googlecode.iterm2.plist"
 }
 
+install_aws() {
+  installing_dotfiles "AWS CLI"
+
+  link "${DOTFILES}/aws" "${HOME}/.aws"
+}
+
 ########################################
 # MacOS specific operations
 ########################################
@@ -128,3 +134,4 @@ is_installed zsh && install_zsh
 is_installed nvim && install_nvim
 is_installed code && install_vs_code
 is_installed iTerm.app && install_iterm
+is_installed aws && install_aws

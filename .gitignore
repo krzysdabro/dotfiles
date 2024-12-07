@@ -3,3 +3,7 @@ nvim/plugin
 vscode/*/
 !vscode/snippets/
 git/config.user
+aws/config
+aws/credentials
+aws/sso
+aws/cli/cache

@@ -13,49 +13,6 @@ hs() {
   history 0 | grep "$(echo $@)" | tail -20
 }
 
-# List EC2 instances
-instances() {
-  aws ec2 describe-instances --output=json ${@} | jq -r '.Reservations[].Instances[] | [(.Tags[] | select(.Key == "Name") | .Value), .InstanceId, .State.Name, .InstanceType, .PrivateIpAddress] | @tsv' | sort | column -t
-}
-
-# Connect to EC2 instance with SSM
-ssm-connect() {
-  profile=$(aws configure list-profiles | grep -v default | gum filter --placeholder "Choose profile")
-  [[ "$profile" == "" ]] && return
-
-  region=$(gum input --prompt "Region: " --value "$(aws configure get region --profile "$profile")")
-  [[ "$region" == "" ]] && return
-
-  instance=$(aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --output json --profile "$profile" --region "$region" | jq -r '.Reservations[].Instances[] | "\(.Tags[] | select(.Key == "Name") | .Value) / \(.InstanceId) / \(.PrivateIpAddress)"' | sort | gum filter --placeholder "Choose instance")
-  [[ "$instance" == "" ]] && return
-
-  instance_id=$(echo ${instance// \/ /;} | cut -d';' -f2)
-  aws ssm start-session --target "$instance_id" --profile "$profile" --region "$region"
-}
-
-ssm-forward() {
-  profile=$(aws configure list-profiles | grep -v default | gum filter --placeholder "Choose profile")
-  [[ "$profile" == "" ]] && return
-
-  region=$(gum input --prompt "Region: " --value "$(aws configure get region --profile "$profile")")
-  [[ "$region" == "" ]] && return
-
-  instance=$(aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --output json --profile "$profile" --region "$region" | jq -r '.Reservations[].Instances[] | "\(.Tags[] | select(.Key == "Name") | .Value) / \(.InstanceId) / \(.PrivateIpAddress)"' | sort | gum filter --placeholder "Choose instance")
-  [[ "$instance" == "" ]] && return
-
-  instance_id=$(echo ${instance// \/ /;} | cut -d';' -f2)
-
-  remote_port=$(gum input --prompt "Remote port: " --placeholder "80")
-  [[ "$remote_port" == "" ]] && return
-
-  local_port=$(gum input --prompt "Local port: " --placeholder "8080")
-  [[ "$local_port" == "" ]] && return
-
-  aws ssm start-session --target $instance_id --profile "$profile" --region "$region" \
-    --document-name AWS-StartPortForwardingSession \
-    --parameters "{\"portNumber\":[\"$remote_port\"],\"localPortNumber\":[\"$local_port\"]}"
-}
-
 # Initialize Terraform with Gitlab Terraform State
 tf-gitlab-init() {
   gitlab_url_file="$HOME/.gitlab_url"

@@ -1,0 +1,66 @@
+# AWS CLI aliases
+# https://docs.aws.amazon.com/cli/latest/userguide/cli-alias.html
+# Use AWS_PROFILE and AWS_REGION to set appropriate profile and region if needed
+
+[toplevel]
+# aws whoami
+whoami = sts get-caller-identity
+
+# aws list-accounts-in-org
+list-accounts-in-org =
+  !f() {
+    aws organizations list-accounts --profile=${1:-default} | \
+    jq -r '["Account ID", "Name", "Email", "Status"], (.Accounts[] | [.Id, .Name, .Email, .Status]) | @tsv' | \
+    column -ts $'\t' | \
+    sed "/ACTIVE/s//`printf "\e[0;32mACTIVE\e[0m"`/;/SUSPENDED/s//`printf "\e[0;31mSUSPENDED\e[0m"`/"
+  }; f
+
+[command ec2]
+# aws ec2 list-instances
+list-instances =
+  !f() {
+    aws ec2 describe-instances --output=json | \
+    jq -r '["Name", "Instance ID", "State", "Instance type", "Private IPv4"], (.Reservations[].Instances[] | [(.Tags[] | select(.Key == "Name") | .Value), .InstanceId, .State.Name, .InstanceType, .PrivateIpAddress]) | @tsv' | \
+    sort | column -ts $'\t' | \
+    sed "/running/s//`printf "\e[0;32mrunning\e[0m"`/;/stopped/s//`printf "\e[0;31mstopped\e[0m"`/;/terminated/s//`printf "\e[0;90mterminated\e[0m"`/"
+  }; f
+
+[command ecr]
+# aws ecr login
+login =
+  !f() {
+    endpoint=$(aws ecr get-authorization-token --output text --query authorizationData[].proxyEndpoint)
+    passwd=$(aws ecr get-authorization-token --output text --query authorizationData[].authorizationToken | base64 --decode | cut -d: -f2)
+    docker login -u AWS -p $passwd $endpoint
+  }; f
+
+
+[command ssm]
+# aws ssm connect
+connect =
+  !f() {
+    instance=$(aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --output json | jq -r '.Reservations[].Instances[] | "\(.Tags[] | select(.Key == "Name") | .Value) / \(.InstanceId) / \(.PrivateIpAddress)"' | sort | gum filter --placeholder "Choose instance")
+    [[ "$instance" == "" ]] && return
+
+    instance_id=$(echo ${instance// \/ /;} | cut -d';' -f2)
+    aws ssm start-session --target "$instance_id"
+  }; f
+
+# aws ssm forward
+forward =
+  !f() {
+    instance=$(aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --output json | jq -r '.Reservations[].Instances[] | "\(.Tags[] | select(.Key == "Name") | .Value) / \(.InstanceId) / \(.PrivateIpAddress)"' | sort | gum filter --placeholder "Choose instance")
+    [[ "$instance" == "" ]] && return
+
+    instance_id=$(echo ${instance// \/ /;} | cut -d';' -f2)
+
+    remote_port=$(gum input --prompt "Remote port: " --placeholder "80")
+    [[ "$remote_port" == "" ]] && return
+
+    local_port=$(gum input --prompt "Local port: " --placeholder "8080")
+    [[ "$local_port" == "" ]] && return
+
+    aws ssm start-session --target $instance_id \
+      --document-name AWS-StartPortForwardingSession \
+      --parameters "{\"portNumber\":[\"$remote_port\"],\"localPortNumber\":[\"$local_port\"]}"
+  }; f
