@@ -1,5 +1,5 @@
 # AWS CLI aliases
-# https://docs.aws.amazon.com/cli/latest/userguide/cli-alias.html
+# https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-alias.html
 # Use AWS_PROFILE and AWS_REGION to set appropriate profile and region if needed
 
 [toplevel]
