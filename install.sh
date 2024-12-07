@@ -66,7 +66,10 @@ install_nvim() {
   installing_dotfiles "Neovim"
 
   link "${DOTFILES}/nvim" "${HOME}/.config/nvim"
-  git clone --depth 1 https://github.com/wbthomason/packer.nvim "${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim"
+
+  if [[ ! -d "${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim" ]]; then
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim "${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim"
+  fi
 }
 
 install_vs_code() {
@@ -103,7 +106,7 @@ if [[ -n "${IS_DARWIN-}" ]]; then
   arrow "Install updates and developer tools"
   sudo softwareupdate -ia
   [[ ! -d /Library/Developer/CommandLineTools ]] && xcode-select --install
-  [[ -n "${IS_ARM-}" ]] && sudo softwareupdate --install-rosetta
+  [[ -n "${IS_ARM-}" && ! -d /usr/libexec/rosetta ]] && sudo softwareupdate --install-rosetta
 
   [[ -n "${IS_ARM-}" ]] && export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
   if ! is_installed brew; then
