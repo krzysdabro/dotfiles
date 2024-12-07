@@ -2,6 +2,7 @@
   a  = add
   c  = commit
   co = checkout
+  cb = checkout -b
   d  = diff --patch-with-stat
   dc = diff --patch-with-stat --cached
   dw = diff --patch-with-stat --word-diff

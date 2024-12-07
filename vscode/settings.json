@@ -53,6 +53,7 @@
     "Brewfile": "ruby",
     "*.Brewfile": "ruby",
     "*.pp": "ruby",
+    "*.tofu": "terraform",
   },
 
   // C/C++
