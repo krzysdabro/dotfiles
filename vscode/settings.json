@@ -28,9 +28,10 @@
   // SCM
   "git.confirmSync": false,
   "git.mergeEditor": true,
+  "git.blame.editorDecoration.enabled": true,
+  "git.blame.editorDecoration.template": "${authorName}, ${authorDateAgo} • ${subject}",
   "git.countBadge": "tracked",
   "scm.countBadge": "focused",
-  "scm.experimental.showHistoryGraph": true,
   "diffEditor.diffAlgorithm": "advanced",
   "diffEditor.ignoreTrimWhitespace": false,
 
