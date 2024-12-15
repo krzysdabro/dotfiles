@@ -10,12 +10,14 @@
   m  = merge --ff --squash
   s  = status -sb
   amend = commit --amend --no-edit
+  upush = "!git push -u ${1:-origin} $(git current-branch)"
   fpush = push --force-with-lease
   staash = stash --all
   purge-branches = "!git branch --merged | egrep -v '(\\*|master|main)' | xargs -n 1 git branch -d && git fetch --prune"
+  current-branch = rev-parse --abbrev-ref HEAD
 
   ## GitLab specific commands
-  make-mr = "!f(){ git push -o merge_request.create -o merge_request.remove_source_branch -o merge_request.target=${1:-$(basename $(git symbolic-ref --short refs/remotes/origin/HEAD))} -u origin $(git current-branch)}; f"
+  make-mr = "!f(){ git push -o merge_request.create -o merge_request.remove_source_branch -o merge_request.target=${1:-$(basename $(git symbolic-ref --short refs/remotes/origin/HEAD))} -u origin $(git current-branch); }; f"
 
 [filter "lfs"]
   clean    = git-lfs clean -- %f
