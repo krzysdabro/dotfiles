@@ -1,6 +1,8 @@
+brew "azure-cli"
 brew "ruby"
 
 cask "google-cloud-sdk"
+cask "wireshark"
 
 # Patch google-cloud-sdk completion for zsh
 def patch_google_cloud_sdk

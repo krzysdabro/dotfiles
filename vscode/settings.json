@@ -1,35 +1,47 @@
 {
-  // General
+  // Editor
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.minimap.enabled": false,
   "editor.bracketPairColorization.enabled": true,
-  "explorer.confirmDelete": false,
-  "explorer.confirmDragAndDrop": false,
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "files.readonlyFromPermissions": true,
-  "workbench.colorTheme": "Tokyo Night Storm",
+
+  // Appearance
   "accessibility.dimUnfocused.enabled": true,
+  "workbench.colorTheme": "Tokyo Night Storm",
 
   // Explorer
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
+    // General
     ".env": "*.env, .env*",
     "README*": "AUTHORS, Authors, BACKERS*, Backers*, CHANGELOG*, CITATION*, CODEOWNERS, CODE_OF_CONDUCT*, CONTRIBUTING*, CONTRIBUTORS, COPYING*, CREDITS, Changelog*, Citation*, Code_Of_Conduct*, Codeowners, Contributing*, Contributors, Copying*, Credits, GOVERNANCE.MD, Governance.md, HISTORY.MD, History.md, LICENSE*, License*, MAINTAINERS, Maintainers, README-*, README_*, RELEASE_NOTES*, ROADMAP.MD, Readme-*, Readme_*, Release_Notes*, Roadmap.md, SECURITY.MD, SPONSORS*, Security.md, Sponsors*, authors, backers*, changelog*, citation*, code_of_conduct*, codeowners, contributing*, contributors, copying*, credits, governance.md, history.md, license*, maintainers, readme-*, readme_*, release_notes*, roadmap.md, security.md, sponsors*",
-    "Brewfile": "Brewfile.lock.json, *.Brewfile",
+
+    // Go
     "go.mod": "go.sum",
     "go.work": "go.work.sum",
-    "*.go": "$(capture)_test.go"
+    "*.go": "${capture}_test.go",
+
+    // Python
+    "pyproject.toml": ".flake8, .isort.cfg, poetry.lock, poetry.toml, .pylintrc, .python-version, requirements*.txt, setup.cfg, setup.py",
+    "requirements.txt": "requirements_*.txt, requirements-*.txt, *_requirements.txt, *-requirements.txt",
+
+    // Other
+    "Brewfile": "Brewfile.lock.json, *.Brewfile",
+    "Dockerfile": "*.Dockerfile, .dockerignore, docker-compose.*"
   },
 
   // SCM
-  "git.confirmSync": false,
-  "git.mergeEditor": true,
   "git.blame.editorDecoration.enabled": true,
   "git.blame.editorDecoration.template": "${authorName}, ${authorDateAgo} • ${subject}",
+  "git.confirmSync": false,
+  "git.mergeEditor": true,
   "git.countBadge": "tracked",
   "scm.countBadge": "focused",
   "diffEditor.diffAlgorithm": "advanced",
