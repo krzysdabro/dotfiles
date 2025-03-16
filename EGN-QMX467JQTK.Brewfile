@@ -1,4 +1,5 @@
 brew "azure-cli"
+brew "kubelogin"
 brew "ruby"
 
 cask "google-cloud-sdk"

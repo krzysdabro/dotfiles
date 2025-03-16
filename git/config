@@ -9,15 +9,16 @@
   l  = log --oneline
   m  = merge --ff --squash
   s  = status -sb
-  amend = commit --amend --no-edit
-  upush = "!git push -u ${1:-origin} $(git current-branch)"
-  fpush = push --force-with-lease
-  staash = stash --all
-  purge-branches = "!git branch --merged | egrep -v '(\\*|master|main)' | xargs -n 1 git branch -d && git fetch --prune"
+
+  amend          = commit --amend --no-edit
+  upush          = "!git push -u ${1:-origin} $(git current-branch)"
+  fpush          = push --force-with-lease
   current-branch = rev-parse --abbrev-ref HEAD
+  my-commits     = "!git l --author=$(git config user.email)"
 
   ## GitLab specific commands
-  make-mr = "!f(){ git push -o merge_request.create -o merge_request.remove_source_branch -o merge_request.target=${1:-$(basename $(git symbolic-ref --short refs/remotes/origin/HEAD))} -u origin $(git current-branch); }; f"
+  make-mr       = "!f(){ git push -o merge_request.create -o merge_request.remove_source_branch -o merge_request.target=${1:-$(basename $(git symbolic-ref --short refs/remotes/origin/HEAD))} -u origin $(git current-branch); }; f"
+  make-draft-mr = "!f(){ git push -o merge_request.create -o merge_request.remove_source_branch -o merge_request.target=${1:-$(basename $(git symbolic-ref --short refs/remotes/origin/HEAD))} -o merge_request.draft -u origin $(git current-branch); }; f"
 
 [filter "lfs"]
   clean    = git-lfs clean -- %f
@@ -25,36 +26,54 @@
   process  = git-lfs filter-process
   required = true
 
-[core]
-  hooksPath = ~/.config/git/hooks
+[branch]
+  sort = -committerdate
 
-[http]
-  cookiefile = ~/.gitcookies
-
-[init]
-	defaultBranch = main
-
-[fetch]
-  writeCommitGraph = true
+[column]
+  ui = auto
 
 [commit]
   gpgsign = true
+  verbose = true
 
-[tag]
-  gpgsign = true
+[core]
+  hooksPath = ~/.config/git/hooks
 
-[pull]
-  rebase  = true
-  twohead = ort
+[diff]
+  algorithm = histogram
+  renames   = true
 
-[rebase]
-  autosquash = true
+[fetch]
+  all       = true
+  prune     = true
+  pruneTags = true
 
 [gpg]
   format = ssh
 
-[credential]
-  helper = osxkeychain
+[init]
+  defaultBranch = main
+
+[pull]
+  rebase = true
+
+[push]
+  autoSetupRemote = true
+  followTags      = true
+  default         = simple
+
+[rebase]
+  autoSquash = true
+  autoStash  = true
+  updateRefs = true
+
+[rerere]
+  autoUpdate = true
+  enabled    = true
+
+[tag]
+  gpgsign = true
+  sort    = version:refname
 
 [url "git@github.com:"]
   pushInsteadOf = "https://github.com/"
