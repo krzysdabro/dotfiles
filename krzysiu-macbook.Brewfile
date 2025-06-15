@@ -6,5 +6,6 @@ brew "rclone"
 brew "restic"
 
 cask "discord"
+cask "docker"
 cask "firefox"
 cask "session-manager-plugin"

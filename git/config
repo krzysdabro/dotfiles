@@ -17,8 +17,8 @@
   my-commits     = "!git l --author=$(git config user.email)"
 
   ## GitLab specific commands
-  make-mr       = "!f(){ git push -o merge_request.create -o merge_request.remove_source_branch -o merge_request.target=${1:-$(basename $(git symbolic-ref --short refs/remotes/origin/HEAD))} -u origin $(git current-branch); }; f"
-  make-draft-mr = "!f(){ git push -o merge_request.create -o merge_request.remove_source_branch -o merge_request.target=${1:-$(basename $(git symbolic-ref --short refs/remotes/origin/HEAD))} -o merge_request.draft -u origin $(git current-branch); }; f"
+  make-mr       = "!f(){ git push -o merge_request.create -o merge_request.remove_source_branch -o merge_request.squash -o merge_request.target=${1:-$(basename $(git symbolic-ref --short refs/remotes/origin/HEAD))}; }; f"
+  make-draft-mr = "!f(){ git push -o merge_request.create -o merge_request.remove_source_branch -o merge_request.squash -o merge_request.target=${1:-$(basename $(git symbolic-ref --short refs/remotes/origin/HEAD))} -o merge_request.draft; }; f"
 
 [filter "lfs"]
   clean    = git-lfs clean -- %f
@@ -40,8 +40,9 @@
   hooksPath = ~/.config/git/hooks
 
 [diff]
-  algorithm = histogram
-  renames   = true
+  algorithm  = histogram
+  renames    = true
+  colorMoved = plain
 
 [fetch]
   all       = true

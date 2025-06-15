@@ -36,6 +36,11 @@ if which gem &> /dev/null; then
   export PATH=$PATH:$(gem environment home)/bin
 fi
 
+# Check if Google Cloud SDK is installed
+if which gcloud &> /dev/null; then
+  export PATH=$PATH:$HOMEBREW_PREFIX/share/google-cloud-sdk/bin
+fi
+
 if [[ -n "${IS_DARWIN-}" ]]; then
   export LSCOLORS="ExGxFxdxCxdxDahbadacec"
   export LC_ALL=en_US.UTF-8

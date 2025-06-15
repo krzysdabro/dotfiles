@@ -10,7 +10,9 @@ alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 
 alias rsync="rsync -P"
+
 alias k="kubectl"
+alias tf="terraform"
 
 alias erase="shred --remove"
 
@@ -24,4 +26,9 @@ fi
 
 if [[ -z "${IS_DARWIN-}" ]]; then
   alias ip="ip -br -c"
+fi
+
+if [[ "$(hostname)" =~ "EGN-" ]]; then
+  alias gkms-encrypt=" EYAML_CONFIG=.eyaml/config.yaml eyaml encrypt -s"
+  alias gkms-decrypt=" EYAML_CONFIG=.eyaml/config.yaml eyaml decrypt -s"
 fi
