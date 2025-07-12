@@ -21,6 +21,7 @@ fi
 # Check if Homebrew is installed
 if which brew &> /dev/null; then
   export HOMEBREW_PREFIX=$(brew --prefix)
+  export PATH=$HOMEBREW_PREFIX/opt/ruby/bin:$PATH
   export MANPATH=$HOMEBREW_PREFIX/share/man:$MANPATH
   export FPATH=$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH
 fi

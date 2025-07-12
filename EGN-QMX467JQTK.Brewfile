@@ -7,7 +7,10 @@ brew "tflint"
 brew "tfsec"
 
 cask "gcloud-cli", postinstall: "${HOMEBREW_PREFIX}/bin/gcloud components update"
-cask "wireshark"
+cask "headlamp"
+
+vscode "hashicorp.terraform"
+vscode "redhat.java"
 
 # Patch google-cloud-sdk completion for zsh
 def patch_gcloud

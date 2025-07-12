@@ -100,7 +100,10 @@
     }
   },
 
-  // JavsScript
+  // Java
+  "java.autobuild.enabled": false,
+
+  // JavaScript
   //"javascript.inlayHints.functionLikeReturnTypes.enabled": true,
   //"javascript.inlayHints.variableTypes.enabled": true,
   //"javascript.inlayHints.parameterNames.enabled": "all",
@@ -134,19 +137,22 @@
   "yaml.format.singleQuote": true,
   "yaml.validate": false,
 
-  // GitLens
-  "gitlens.codeLens.enabled": false,
-  "gitlens.statusBar.enabled": false,
+  // Code spell checker
+  "cSpell.enableFiletypes": [
+    "!plaintext"
+  ],
+  "cSpell.enabledNotifications": {
+    "Average Word Length too Long": false,
+    "Lines too Long": false,
+    "Maximum Word Length Exceeded": false
+  },
 
   // Other settings
   "dotfiles.repository": "krzysdabro/dotfiles",
   "extensions.ignoreRecommendations": true,
+  "github.copilot.editor.enableAutoCompletions": true,
   "liveServer.settings.donotVerifyTags": true,
   "liveServer.settings.donotShowInfoMsg": true,
-  "redhat.telemetry.enabled": false,
   "markdown.extension.toc.updateOnSave": false,
-  "cSpell.enableFiletypes": [
-    "!plaintext"
-  ],
-  "github.copilot.editor.enableAutoCompletions": true,
+  "redhat.telemetry.enabled": false
 }
