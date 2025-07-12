@@ -1,12 +1,16 @@
 brew "azure-cli"
+brew "helmsman"
 brew "kubelogin"
 brew "ruby"
+brew "tfenv"
+brew "tflint"
+brew "tfsec"
 
-cask "google-cloud-sdk"
+cask "gcloud-cli", postinstall: "${HOMEBREW_PREFIX}/bin/gcloud components update"
 cask "wireshark"
 
 # Patch google-cloud-sdk completion for zsh
-def patch_google_cloud_sdk
+def patch_gcloud
   path = "#{HOMEBREW_PREFIX}/share/zsh/site-functions/_google_cloud_sdk"
   return unless File.exist?(path)
 
@@ -15,4 +19,4 @@ def patch_google_cloud_sdk
   File.write(path, line + content) unless content.start_with?(line)
 end
 
-patch_google_cloud_sdk
+patch_gcloud

@@ -1,3 +1,5 @@
+tap "cloudflare/cloudflare"
+
 brew "ansible"
 brew "awscli"
 brew "cloudflared"
@@ -6,6 +8,9 @@ brew "rclone"
 brew "restic"
 
 cask "discord"
-cask "docker"
+cask "docker-desktop"
 cask "firefox"
 cask "session-manager-plugin"
+cask "vlc"
+
+vscode "hashicorp.terraform"

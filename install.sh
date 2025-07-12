@@ -81,10 +81,6 @@ install_vs_code() {
     CODE_PATH="${HOME}/.config/Code/User"
   fi
   link "${DOTFILES}/vscode" "${CODE_PATH}"
-
-  while read extid; do
-    code --install-extension $extid > /dev/null
-  done < ${DOTFILES}/vscode/extensions.txt
 }
 
 install_iterm() {
