@@ -78,6 +78,19 @@
   },
   "C_Cpp.clang_format_style": "Google",
 
+  // Docker Compose
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+
+  // GitHub Actions
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+
   // HTML
   "html.autoClosingTags": false,
 
@@ -125,11 +138,6 @@
   },
   "terraform.experimentalFeatures.validateOnSave": true,
 
-  // VCL
-  "[vcl]": {
-    "editor.tabSize": 4
-  },
-
   // YAML
   "yaml.customTags": [
     "!vault"
@@ -147,10 +155,19 @@
     "Maximum Word Length Exceeded": false
   },
 
+  // Github Copilot
+  "github.copilot.editor.enableAutoCompletions": true,
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  },
+
   // Other settings
   "dotfiles.repository": "krzysdabro/dotfiles",
   "extensions.ignoreRecommendations": true,
-  "github.copilot.editor.enableAutoCompletions": true,
   "liveServer.settings.donotVerifyTags": true,
   "liveServer.settings.donotShowInfoMsg": true,
   "markdown.extension.toc.updateOnSave": false,

@@ -1,3 +1,5 @@
+tap "azure/kubelogin"
+
 brew "azure-cli"
 brew "helmsman"
 brew "kubelogin"
