@@ -36,5 +36,10 @@ feedbin() {
   FEEDBIN_URL="$(op read op://Homelab/Feedbin/website)"
   FEEDBIN_PAGE_TOKEN="$(op read op://Homelab/Feedbin/token)"
 
-  cloudflared access curl "${FEEDBIN_URL}/pages" -G --data "page_token=${FEEDBIN_PAGE_TOKEN}" --data-urlencode "url=${1}"
+  RESULT=$(cloudflared access curl "${FEEDBIN_URL}/pages" -s -G --data "page_token=${FEEDBIN_PAGE_TOKEN}" --data-urlencode "url=${1}" -w "%{http_code} %header{Location}")
+  if [[ "${RESULT}" == "302 ${FEEDBIN_URL}"* ]]; then
+    echo "\e[0;32m✔\e[0m Saved article to Feedbin!"
+  else
+    echo "\e[0;31m✖\e[0m Failed to save article to Feedbin."
+  fi
 }
