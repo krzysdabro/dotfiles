@@ -29,14 +29,19 @@ backup() {
 
 feedbin() {
   if [ -z "$1" ]; then
-    echo "Usage: feedbin <URL>"
+    echo "Usage: feedbin <URL> [TITLE]"
     return 1
   fi
 
-  FEEDBIN_URL="$(op read op://Homelab/Feedbin/website)"
-  FEEDBIN_PAGE_TOKEN="$(op read op://Homelab/Feedbin/token)"
+  FEEDBIN_URL="$(op read op://Homelab/Feedbin/website)" || return 1
+  FEEDBIN_PAGE_TOKEN="$(op read op://Homelab/Feedbin/token)" || return 1
 
-  RESULT=$(cloudflared access curl "${FEEDBIN_URL}/pages" -s -G --data "page_token=${FEEDBIN_PAGE_TOKEN}" --data-urlencode "url=${1}" -w "%{http_code} %header{Location}")
+  OPTS=(--data "page_token=${FEEDBIN_PAGE_TOKEN}" --data-urlencode "url=${1}")
+  if [ -n "$2" ]; then
+    OPTS+=(--data-urlencode "title=${2}")
+  fi
+
+  RESULT=$(cloudflared access curl "${FEEDBIN_URL}/pages" -s -G ${OPTS} -w "%{http_code} %header{Location}")
   if [[ "${RESULT}" == "302 ${FEEDBIN_URL}"* ]]; then
     echo "\e[0;32m✔\e[0m Saved article to Feedbin!"
   else

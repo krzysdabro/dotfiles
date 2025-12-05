@@ -19,16 +19,20 @@ alias erase="shred --remove"
 if [[ -n "${IS_DARWIN-}" ]]; then
   alias ls="ls -G"
   alias ll="ls -lah"
+
+  alias copy="pbcopy"
+  alias pasta="pbpaste"
+
+  alias afk="osascript -e 'tell application \"System Events\" to keystroke \"q\" using {command down,control down}'"
 else
   alias ls="ls -N --color=auto --group-directories-first"
   alias ll="ls -lahv"
+
+  alias ip="ip -br -c"
 fi
 
 if [[ -z "${IS_DARWIN-}" ]]; then
   alias ip="ip -br -c"
-
-  alias copy="pbcopy"
-  alias pasta="pbpaste"
 fi
 
 if [[ "$(hostname)" =~ "EGN-" ]]; then
