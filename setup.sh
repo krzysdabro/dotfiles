@@ -34,7 +34,8 @@ is_installed() {
   return 1
 }
 
-DOTFILES=`dirname $(realpath "$0")`
+DOTFILES=`${HOME}/dotfiles`
+
 
 # Check if script runs on MacOS
 if [[ "${OSTYPE}" =~ ^darwin ]]; then
@@ -45,6 +46,44 @@ fi
 if [[ "$(/usr/bin/uname -m)" == "arm64" ]]; then
   IS_ARM=1
 fi
+
+
+########################################
+# Download dotfiles repository
+########################################
+if [[ ! -d "${DOTFILES}" ]]; then
+  arrow "Cloning dotfiles repository"
+  git clone https://github.com/krzysdabro/dotfiles.git "${DOTFILES}"
+fi
+
+
+########################################
+# MacOS specific operations
+########################################
+if [[ -n "${IS_DARWIN-}" ]]; then
+  arrow "Install updates and developer tools"
+  sudo softwareupdate -ia
+  [[ ! -d /Library/Developer/CommandLineTools ]] && xcode-select --install
+  [[ -n "${IS_ARM-}" && ! -d /usr/libexec/rosetta ]] && sudo softwareupdate --install-rosetta
+
+  [[ -n "${IS_ARM-}" ]] && export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
+  if ! is_installed brew; then
+    arrow "Install homebrew"
+    bash -c "$(curl -fsSl https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+
+  arrow "Run homebrew"
+  brew bundle --file=${DOTFILES}/Brewfile
+
+  # https://support.1password.com/could-not-connect/#for-all-browsers
+  GOOGLE_APP_SUPPORT="${HOME}/Library/Application Support/Google"
+  mkdir -p "${GOOGLE_APP_SUPPORT}/Chrome/NativeMessagingHosts" "${GOOGLE_APP_SUPPORT}/Chrome Dev/"
+  link "${GOOGLE_APP_SUPPORT}/Chrome/NativeMessagingHosts" "${GOOGLE_APP_SUPPORT}/Chrome Dev/NativeMessagingHosts"
+
+  arrow "Install MacOS settings"
+  ${DOTFILES}/macos.sh
+fi
+
 
 #########################
 # Setup install functions
@@ -95,37 +134,10 @@ install_aws() {
   link "${DOTFILES}/aws" "${HOME}/.aws"
 }
 
+
 ########################################
-# MacOS specific operations
-########################################
-if [[ -n "${IS_DARWIN-}" ]]; then
-  arrow "Install updates and developer tools"
-  sudo softwareupdate -ia
-  [[ ! -d /Library/Developer/CommandLineTools ]] && xcode-select --install
-  [[ -n "${IS_ARM-}" && ! -d /usr/libexec/rosetta ]] && sudo softwareupdate --install-rosetta
-
-  [[ -n "${IS_ARM-}" ]] && export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
-  if ! is_installed brew; then
-    arrow "Install homebrew"
-    bash -c "$(curl -fsSl https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  fi
-
-  arrow "Run homebrew"
-  brew bundle --file=${DOTFILES}/Brewfile
-
-  # https://support.1password.com/could-not-connect/#for-all-browsers
-  GOOGLE_APP_SUPPORT="${HOME}/Library/Application Support/Google"
-  mkdir -p "${GOOGLE_APP_SUPPORT}/Chrome/NativeMessagingHosts" "${GOOGLE_APP_SUPPORT}/Chrome Dev/"
-  link "${GOOGLE_APP_SUPPORT}/Chrome/NativeMessagingHosts" "${GOOGLE_APP_SUPPORT}/Chrome Dev/NativeMessagingHosts"
-
-  arrow "Install MacOS settings"
-  ${DOTFILES}/macos.sh
-fi
-
-
-##################
 # Install dotfiles
-##################
+########################################
 arrow "Install dotfiles"
 
 is_installed git && install_git

@@ -1,5 +1,9 @@
 # Dotfiles
-Use `install.sh` to install dotfiles.
+## Installation
+MacOS / Linux:
+```bash
+curl -Ls https://raw.githubusercontent.com/krzysdabro/dotfiles/master/setup.sh | bash
+```
 
 ## Wallpapers
 - [Ultrawide Gradient Wallpapers](https://imgur.com/a/weOKrJN)
