@@ -1,9 +1,8 @@
 tap "azure/kubelogin"
 
 brew "azure-cli"
-brew "helmsman"
 brew "kubelogin"
-brew "ruby"
+brew "ruby@3"
 brew "tfenv"
 brew "tflint"
 brew "tfsec"
