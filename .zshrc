@@ -13,15 +13,10 @@ if [[ "$(/usr/bin/uname -m)" == "arm64" ]]; then
   IS_ARM=1
 fi
 
-# Add Homebrew to PATH on ARM architecture
-if [[ -n "${IS_ARM-}" && -d /opt/homebrew ]]; then
-  export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
-fi
-
 # Check if Homebrew is installed
 if which brew &> /dev/null; then
   export HOMEBREW_PREFIX=$(brew --prefix)
-  export PATH=$HOMEBREW_PREFIX/opt/ruby/bin:$PATH
+  export PATH=$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$HOMEBREW_PREFIX/opt/ruby/bin:$PATH
   export MANPATH=$HOMEBREW_PREFIX/share/man:$MANPATH
   export FPATH=$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH
 fi

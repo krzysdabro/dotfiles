@@ -13,6 +13,9 @@ fi
 # Set dark theme
 defaults write NSGlobalDomain AppleInterfaceStyle -string 'Dark'
 
+# Disable menu icons
+defaults write -g NSMenuEnableActionImages -bool NO
+
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
 

@@ -31,10 +31,6 @@ else
   alias ip="ip -br -c"
 fi
 
-if [[ -z "${IS_DARWIN-}" ]]; then
-  alias ip="ip -br -c"
-fi
-
 if [[ "$(hostname)" =~ "EGN-" ]]; then
   alias gkms-encrypt=" EYAML_CONFIG=.eyaml/config.yaml eyaml encrypt -o string -s"
   alias gkms-decrypt=" EYAML_CONFIG=.eyaml/config.yaml eyaml decrypt -o string -s"

@@ -146,9 +146,9 @@
   "yaml.validate": false,
 
   // Code spell checker
-  "cSpell.enableFiletypes": [
-    "!plaintext"
-  ],
+  "cSpell.enabledFileTypes": {
+    "plaintext": false
+  },
   "cSpell.enabledNotifications": {
     "Average Word Length too Long": false,
     "Lines too Long": false,
