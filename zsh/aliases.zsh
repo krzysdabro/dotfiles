@@ -38,3 +38,7 @@ if [[ "$(hostname)" =~ "EGN-" ]]; then
   alias fed-gkms-decrypt=" EYAML_CONFIG=.eyaml/config.yaml fedctl eyaml decrypt -o string -s"
   alias gkms-k8s-secret=" sed 's/^ENC\[[^,]*,\(.*\)\]$/\1/; y#/+#_-#; s#^#ref+gkms://#'"
 fi
+
+if which claude &> /dev/null; then
+  alias claude="$HOME/.claude/start.sh"
+fi

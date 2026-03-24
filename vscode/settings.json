@@ -155,15 +155,9 @@
     "Maximum Word Length Exceeded": false
   },
 
-  // Github Copilot
-  "github.copilot.editor.enableAutoCompletions": true,
-  "github.copilot.nextEditSuggestions.enabled": true,
-  "github.copilot.enable": {
-    "*": true,
-    "plaintext": false,
-    "markdown": true,
-    "scminput": false
-  },
+  // Claude Code
+  "claudeCode.claudeProcessWrapper": "/Users/krzysiu/.claude/start.sh",
+  "claudeCode.preferredLocation": "sidebar",
 
   // Other settings
   "extensions.autoUpdate": false,

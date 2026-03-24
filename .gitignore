@@ -7,3 +7,7 @@ aws/config
 aws/credentials
 aws/sso
 aws/cli/cache
+claude/*/
+claude/history.jsonl
+claude/mcp-needs-auth-cache.json
+claude/op-env-id

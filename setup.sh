@@ -34,7 +34,7 @@ is_installed() {
   return 1
 }
 
-DOTFILES=`${HOME}/dotfiles`
+DOTFILES="${HOME}/dotfiles"
 
 
 # Check if script runs on MacOS
@@ -134,6 +134,12 @@ install_aws() {
   link "${DOTFILES}/aws" "${HOME}/.aws"
 }
 
+install_claude() {
+  installing_dotfiles "Claude Code"
+
+  link "${DOTFILES}/claude" "${HOME}/.claude"
+}
+
 
 ########################################
 # Install dotfiles
@@ -146,3 +152,4 @@ is_installed nvim && install_nvim
 is_installed code && install_vs_code
 is_installed iTerm.app && install_iterm
 is_installed aws && install_aws
+is_installed claude && install_claude
