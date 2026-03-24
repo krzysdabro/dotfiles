@@ -133,7 +133,6 @@ install_aws() {
   link "${DOTFILES}/aws" "${HOME}/.aws"
 }
 
-
 install_npm() {
   installing_dotfiles "NPM"
 
@@ -145,6 +144,13 @@ install_pip() {
 
   link "${DOTFILES}/pip.conf" "${HOME}/.config/pip/pip.conf"
 }
+
+install_claude() {
+  installing_dotfiles "Claude Code"
+
+  link "${DOTFILES}/claude" "${HOME}/.claude"
+}
+
 
 ########################################
 # Install dotfiles
@@ -159,3 +165,4 @@ is_installed iTerm.app && install_iterm
 is_installed aws && install_aws
 is_installed npm && install_npm
 is_installed pip && install_pip
+is_installed claude && install_claude

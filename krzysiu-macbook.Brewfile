@@ -3,7 +3,6 @@ tap "cloudflare/cloudflare"
 brew "ansible"
 brew "cloudflared"
 brew "gh"
-brew "ollama"
 brew "rclone"
 brew "restic"
 
