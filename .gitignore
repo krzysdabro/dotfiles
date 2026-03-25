@@ -1,7 +1,7 @@
 Brewfile.lock.json
 nvim/plugin
 vscode/*/
-!vscode/snippets/
+vscode/chatLanguageModels.json
 git/config.user
 aws/config
 aws/credentials

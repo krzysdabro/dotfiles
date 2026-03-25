@@ -138,7 +138,7 @@ install_claude() {
   installing_dotfiles "Claude Code"
 
   link "${DOTFILES}/claude" "${HOME}/.claude"
-  link "${DOTFILES}/claude/start.sh" "/usr/local/bin/claude-start"
+  sudo link "${DOTFILES}/claude/start.sh" "/usr/local/bin/claude-start"
 }
 
 
