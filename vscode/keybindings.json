@@ -17,12 +17,18 @@
     "key": "shift+alt+o",
     "command": "-editor.action.organizeImports"
   },
+  // Other
   {
     "key": "ctrl+shift+p",
     "command": "workbench.action.showCommands"
   },
   {
     "key": "shift+cmd+p",
-    "command": "-workbench.action.showCommands"
+    "command": "workbench.action.showCommands"
+  },
+  {
+    "key": "shift+cmd+r",
+    "command": "workbench.action.reloadWindow",
+    "when": ""
   }
 ]

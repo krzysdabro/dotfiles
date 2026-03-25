@@ -166,10 +166,12 @@
   },
 
   // Other settings
-  "dotfiles.repository": "krzysdabro/dotfiles",
+  "extensions.autoUpdate": false,
   "extensions.ignoreRecommendations": true,
   "liveServer.settings.donotVerifyTags": true,
   "liveServer.settings.donotShowInfoMsg": true,
   "markdown.extension.toc.updateOnSave": false,
-  "redhat.telemetry.enabled": false
+  "redhat.telemetry.enabled": false,
+  "update.mode": "start",
+  "update.statusBar": "hidden"
 }

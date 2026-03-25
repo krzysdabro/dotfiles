@@ -8,7 +8,6 @@ brew "tflint"
 brew "tfsec"
 
 cask "gcloud-cli", postinstall: "${HOMEBREW_PREFIX}/bin/gcloud components update"
-cask "headlamp"
 
 vscode "hashicorp.terraform"
 vscode "redhat.java"
