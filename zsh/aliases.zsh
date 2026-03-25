@@ -40,5 +40,5 @@ if [[ "$(hostname)" =~ "EGN-" ]]; then
 fi
 
 if which claude &> /dev/null; then
-  alias claude="$HOME/.claude/start.sh"
+  alias claude="$HOME/.claude/start.sh $HOMEBREW_PREFIX/bin/claude"
 fi
