@@ -11,7 +11,11 @@
     "deny": [
       "Read(.env)",
       "Read(.env.*)",
+      "Read(*.pem)",
+      "Read(*.key)",
+      "Read(~/.config)",
       "Read(~/.kube)",
+      "Read(~/.ssh)",
       "Bash(op)"
     ],
   }

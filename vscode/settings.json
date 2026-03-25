@@ -156,7 +156,7 @@
   },
 
   // Claude Code
-  "claudeCode.claudeProcessWrapper": "/Users/krzysiu/.claude/start.sh",
+  "claudeCode.claudeProcessWrapper": "/usr/local/bin/claude-start",
   "claudeCode.preferredLocation": "sidebar",
 
   // Other settings
