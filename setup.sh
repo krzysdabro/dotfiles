@@ -14,6 +14,11 @@ installing_dotfiles() {
   printf "Installing dotfiles for ${C_GREEN}$@${C_RESET}\n"
 }
 
+ask() {
+  read -p "$1 [y/N] " response
+  [[ "$response" =~ ^[yY]$ ]] && return 0 || return 1
+}
+
 realpath() {
   [[ $1 == /* ]] && echo "$1" || echo "${PWD}/${1#./}"
 }
@@ -34,7 +39,7 @@ is_installed() {
   return 1
 }
 
-DOTFILES=`${HOME}/dotfiles`
+DOTFILES="${HOME}/dotfiles"
 
 
 # Check if script runs on MacOS
@@ -61,10 +66,10 @@ fi
 # MacOS specific operations
 ########################################
 if [[ -n "${IS_DARWIN-}" ]]; then
-  arrow "Install updates and developer tools"
-  sudo softwareupdate -ia --agree-to-license
-  [[ ! -d /Library/Developer/CommandLineTools ]] && xcode-select --install
-  [[ -n "${IS_ARM-}" && ! -d /usr/libexec/rosetta ]] && sudo softwareupdate --install-rosetta --agree-to-license
+  arrow "Update OS and install developer tools"
+  ask "Do you want to install OS updates?" && sudo softwareupdate -ia --agree-to-license
+  [[ ! -d /Library/Developer/CommandLineTools ]] && ask "Do you want to developer tools?" && xcode-select --install
+  [[ -n "${IS_ARM-}" && ! -d /usr/libexec/rosetta ]] && ask "Do you want to install Rosetta?" && sudo softwareupdate --install-rosetta --agree-to-license
 
   [[ -n "${IS_ARM-}" ]] && export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
   if ! is_installed brew; then

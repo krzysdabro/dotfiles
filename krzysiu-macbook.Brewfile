@@ -8,6 +8,8 @@ brew "rclone"
 brew "restic"
 
 cask "discord"
+cask "knockknock"
+cask "ransomwhere"
 cask "steam"
 cask "vlc"
 
