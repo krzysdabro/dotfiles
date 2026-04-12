@@ -158,8 +158,10 @@
   // Claude Code
   "claudeCode.claudeProcessWrapper": "/usr/local/bin/claude-start",
   "claudeCode.preferredLocation": "sidebar",
+  "claudeCode.useCtrlEnterToSend": true,
 
   // Other settings
+  "chat.disableAIFeatures": true,
   "extensions.autoUpdate": false,
   "extensions.ignoreRecommendations": true,
   "liveServer.settings.donotVerifyTags": true,

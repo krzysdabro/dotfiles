@@ -17,6 +17,6 @@
       "Read(~/.kube)",
       "Read(~/.ssh)",
       "Bash(op)"
-    ],
+    ]
   }
 }
