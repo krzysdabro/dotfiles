@@ -30,13 +30,7 @@ link() {
 }
 
 is_installed() {
-  if which $1 &> /dev/null; then
-    return 0
-  fi
-  if [[ -d /Applications/$1 || -d ${HOME}/Applications/$1 ]]; then
-    return 0
-  fi
-  return 1
+  return $(which "$1" &> /dev/null || [[ -d "/Applications/$1.app" || -d "${HOME}/Applications/$1.app" ]])
 }
 
 DOTFILES="${HOME}/dotfiles"
@@ -140,6 +134,18 @@ install_aws() {
 }
 
 
+install_npm() {
+  installing_dotfiles "NPM"
+
+  link "${DOTFILES}/.npmrc" "${HOME}/.npmrc"
+}
+
+install_pip() {
+  installing_dotfiles "PIP"
+
+  link "${DOTFILES}/pip.conf" "${HOME}/.config/pip/pip.conf"
+}
+
 ########################################
 # Install dotfiles
 ########################################
@@ -151,3 +157,5 @@ is_installed nvim && install_nvim
 is_installed code && install_vs_code
 is_installed iTerm.app && install_iterm
 is_installed aws && install_aws
+is_installed npm && install_npm
+is_installed pip && install_pip

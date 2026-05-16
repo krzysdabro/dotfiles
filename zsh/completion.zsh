@@ -44,6 +44,6 @@ autoload -Uz compinit
 autoload -U +X bashcompinit && bashcompinit
 compinit
 
-if which az &> /dev/null; then
+if is_installed az; then
   source $HOMEBREW_PREFIX/etc/bash_completion.d/az
 fi

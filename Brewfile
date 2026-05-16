@@ -1,6 +1,5 @@
 cask_args appdir: "/Applications"
 
-brew "container"
 brew "coreutils"
 brew "curl"
 brew "git"
@@ -27,6 +26,7 @@ cask "1password-cli"
 cask "brave-browser"
 cask "cloude-code"
 cask "iterm2"
+cask "rancher"
 cask "spotify"
 cask "visual-studio-code"
 

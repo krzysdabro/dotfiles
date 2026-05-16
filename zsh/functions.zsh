@@ -18,6 +18,7 @@ boop() {
   afplay /System/Library/Sounds/Tink.aiff
 }
 
+# Backup current directory
 backup() {
   dir=${1:-$PWD}
   repo=$HOME/.restic_repository
@@ -27,6 +28,7 @@ backup() {
   restic --repository-file=$repo backup "$1" --exclude-file=$HOME/.restic_exclude
 }
 
+# Save article to Feedbin
 feedbin() {
   if [ -z "$1" ]; then
     echo "Usage: feedbin <URL> [TITLE]"

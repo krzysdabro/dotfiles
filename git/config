@@ -13,6 +13,7 @@
   amend      = commit --amend --no-edit
   upush      = "!git push -u ${1:-origin} $(git branch --show-current)"
   fpush      = push --force-with-lease
+  sync       = "!git pull --rebase && git push"
   my-commits = "!git l --author=$(git config user.email)"
   tidy       = "!git branch -v | grep '\\[gone\\]' | awk '{print $1}' | xargs git branch -D"
 
