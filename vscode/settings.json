@@ -172,6 +172,7 @@
   "liveServer.settings.donotShowInfoMsg": true,
   "markdown.extension.toc.updateOnSave": false,
   "redhat.telemetry.enabled": false,
+  "telemetry.feedback.enabled": false,
   "update.mode": "start",
   "update.statusBar": "hidden"
 }

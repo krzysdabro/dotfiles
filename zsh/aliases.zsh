@@ -32,9 +32,13 @@ else
 fi
 
 if [[ "$(hostname)" =~ "EGN-" ]]; then
+  alias gcloud-login="gcloud auth login --update-adc"
+
   alias gkms-encrypt=" EYAML_CONFIG=.eyaml/config.yaml eyaml encrypt -o string -s"
-  alias gkms-decrypt=" EYAML_CONFIG=.eyaml/config.yaml eyaml decrypt -o string -s"
+  alias gkms-decrypt=" EYAML_CONFIG=.eyaml/config.yaml eyaml decrypt -s"
   alias fed-gkms-encrypt=" EYAML_CONFIG=.eyaml/config.yaml fedctl eyaml encrypt -o string -s"
-  alias fed-gkms-decrypt=" EYAML_CONFIG=.eyaml/config.yaml fedctl eyaml decrypt -o string -s"
+  alias fed-gkms-decrypt=" EYAML_CONFIG=.eyaml/config.yaml fedctl eyaml decrypt -s"
   alias gkms-k8s-secret=" sed 's/^ENC\[[^,]*,\(.*\)\]$/\1/; y#/+#_-#; s#^#ref+gkms://#'"
+  alias gkms-enc-secret=" sed 's#^ref+gkms://##; y#_-#/+#; s#^#ENC[gkms,#; s#\$#]#'"
 fi
+
