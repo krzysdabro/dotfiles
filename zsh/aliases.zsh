@@ -42,3 +42,6 @@ if [[ "$(hostname)" =~ "EGN-" ]]; then
   alias gkms-enc-secret=" sed 's#^ref+gkms://##; y#_-#/+#; s#^#ENC[gkms,#; s#\$#]#'"
 fi
 
+if which claude &> /dev/null; then
+  alias claude="$HOME/.claude/start.sh $HOMEBREW_PREFIX/bin/claude"
+fi

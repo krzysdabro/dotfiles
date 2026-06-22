@@ -1,9 +1,13 @@
 Brewfile.lock.json
 nvim/plugin
 vscode/*/
-!vscode/snippets/
+vscode/chatLanguageModels.json
 git/config.user
 aws/config
 aws/credentials
 aws/sso
 aws/cli/cache
+claude/*
+!claude/rules
+!claude/settings.*.json
+!claude/start.sh

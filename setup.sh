@@ -24,9 +24,15 @@ realpath() {
 }
 
 link() {
-  rm -rf "$2"
-  mkdir -p "$(dirname "$2")"
-  ln -s "$1" "$2"
+  if [[ `dirname "$2"` =~ ^/usr ]]; then
+    sudo rm -rf "$2"
+    sudo mkdir -p "$(dirname "$2")"
+    sudo ln -s "$1" "$2"
+  else
+    rm -rf "$2"
+    mkdir -p "$(dirname "$2")"
+    ln -s "$1" "$2"
+  fi
 }
 
 is_installed() {
@@ -133,7 +139,6 @@ install_aws() {
   link "${DOTFILES}/aws" "${HOME}/.aws"
 }
 
-
 install_npm() {
   installing_dotfiles "NPM"
 
@@ -145,6 +150,37 @@ install_pip() {
 
   link "${DOTFILES}/pip.conf" "${HOME}/.config/pip/pip.conf"
 }
+
+install_claude() {
+  installing_dotfiles "Claude Code"
+
+  link "${DOTFILES}/claude" "${HOME}/.claude"
+  link "${DOTFILES}/claude/start.sh" "/usr/local/bin/claude-start"
+
+  if [[ ! -f "${DOTFILES}/claude/op-env-id" ]]; then
+    read -p "Provide 1Password environment ID: " openv
+    echo $openv > "${DOTFILES}/claude/op-env-id"
+  fi
+
+  claude_settings_files=(${DOTFILES}/claude/settings.all.json)
+  if [[ -f "${DOTFILES}/claude/settings.$(hostname -s).json" ]]; then
+    claude_settings_files+=(${DOTFILES}/claude/settings.$(hostname -s).json)
+  fi
+
+  claude_settings_new=$(mktemp)
+  jq -s 'reduce .[] as $obj ({}; . * $obj)' ${claude_settings_files[*]} > $claude_settings_new
+
+  if [[ -f "${DOTFILES}/claude/settings.json" ]]; then
+    claude_settings_current="${DOTFILES}/claude/settings.json"
+  else
+    claude_settings_current=<(echo "")
+  fi
+
+  git diff --no-index --no-prefix --ignore-blank-lines --color ${claude_settings_current} ${claude_settings_new} || \
+  ask "Do you accept changes in ${DOTFILES}/claude/settings.json?" && \
+  cat ${claude_settings_new} > ${DOTFILES}/claude/settings.json
+}
+
 
 ########################################
 # Install dotfiles
@@ -159,3 +195,4 @@ is_installed iTerm.app && install_iterm
 is_installed aws && install_aws
 is_installed npm && install_npm
 is_installed pip && install_pip
+is_installed claude && install_claude

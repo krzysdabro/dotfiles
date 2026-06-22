@@ -155,17 +155,13 @@
     "Maximum Word Length Exceeded": false
   },
 
-  // Github Copilot
-  "github.copilot.editor.enableAutoCompletions": true,
-  "github.copilot.nextEditSuggestions.enabled": true,
-  "github.copilot.enable": {
-    "*": true,
-    "plaintext": false,
-    "markdown": true,
-    "scminput": false
-  },
+  // Claude Code
+  "claudeCode.claudeProcessWrapper": "/usr/local/bin/claude-start",
+  "claudeCode.preferredLocation": "sidebar",
+  "claudeCode.useCtrlEnterToSend": true,
 
   // Other settings
+  "chat.disableAIFeatures": true,
   "extensions.autoUpdate": false,
   "extensions.ignoreRecommendations": true,
   "liveServer.settings.donotVerifyTags": true,
