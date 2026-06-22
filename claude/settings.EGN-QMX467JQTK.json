@@ -9,6 +9,12 @@
         "source": "git",
         "url": "${GIT_URL}:ai/egnyte-ai-toolkit.git"
       }
+    },
+    "egnyte-kd-plugins": {
+      "source": {
+        "source": "git",
+        "url": "${GIT_URL}:kdabrowski/claude-plugins.git"
+      }
     }
   }
 }

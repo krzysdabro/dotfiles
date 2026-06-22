@@ -8,5 +8,6 @@ aws/credentials
 aws/sso
 aws/cli/cache
 claude/*
+!claude/rules
 !claude/settings.*.json
 !claude/start.sh

@@ -4,3 +4,4 @@
 .vscode
 .devcontainer
 .claude/settings.local.json
+.claude/worktrees

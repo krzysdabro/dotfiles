@@ -11,9 +11,13 @@
     "commit": "",
     "pr": ""
   },
+  "model": "opus[1m]",
   "enableAllProjectMcpServers": false,
   "alwaysThinkingEnabled": true,
   "permissions": {
+    "allow": [
+      "Bash(git show *)"
+    ],
     "deny": [
       "Read(.env)",
       "Read(.env.*)",
@@ -41,9 +45,23 @@
       "Bash(wget *| bash*)",
       "Bash(git push --force*)",
       "Bash(git push *--force*)",
-      "Bash(git reset --hard*)",
+      "Bash(git reset *--hard*)",
+      "Bash(git fpush)",
+      "Bash(git sync)",
       "Bash(op *)",
       "Bash(gh auth *)"
     ]
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "ask-questions-if-underspecified@trailofbits": true
+  },
+  "extraKnownMarketplaces": {
+    "trailofbits": {
+      "source": {
+        "source": "github",
+        "repo": "trailofbits/skills"
+      }
+    }
   }
 }

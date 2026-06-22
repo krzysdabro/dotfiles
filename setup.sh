@@ -78,7 +78,7 @@ if [[ -n "${IS_DARWIN-}" ]]; then
   fi
 
   arrow "Run homebrew"
-  #brew bundle --file=${DOTFILES}/Brewfile
+  brew bundle --file=${DOTFILES}/Brewfile
 
   # https://support.1password.com/could-not-connect/#for-all-browsers
   GOOGLE_APP_SUPPORT="${HOME}/Library/Application Support/Google"
@@ -86,7 +86,7 @@ if [[ -n "${IS_DARWIN-}" ]]; then
   link "${GOOGLE_APP_SUPPORT}/Chrome/NativeMessagingHosts" "${GOOGLE_APP_SUPPORT}/Chrome Dev/NativeMessagingHosts"
 
   arrow "Install MacOS settings"
-  #${DOTFILES}/macos.sh
+  ${DOTFILES}/macos.sh
 fi
 
 
