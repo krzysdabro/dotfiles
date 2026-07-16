@@ -1,19 +1,20 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "enabledPlugins": {
-    "jira@egnyte-ai-toolkit": true
+    "jira@egnyte-ai-toolkit": false,
+    "egnyte@egnyte-kd": true
   },
   "extraKnownMarketplaces": {
     "egnyte-ai-toolkit": {
       "source": {
         "source": "git",
-        "url": "${GIT_URL}:ai/egnyte-ai-toolkit.git"
+        "url": "git.egnyte-internal.com:ai/egnyte-ai-toolkit.git"
       }
     },
-    "egnyte-kd-plugins": {
+    "egnyte-kd": {
       "source": {
         "source": "git",
-        "url": "${GIT_URL}:kdabrowski/claude-plugins.git"
+        "url": "git.egnyte-internal.com:kdabrowski/claude.git"
       }
     }
   }

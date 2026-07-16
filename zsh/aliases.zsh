@@ -40,6 +40,7 @@ if [[ "$(hostname)" =~ "EGN-" ]]; then
   alias fed-gkms-decrypt=" EYAML_CONFIG=.eyaml/config.yaml fedctl eyaml decrypt -s"
   alias gkms-k8s-secret=" sed 's/^ENC\[[^,]*,\(.*\)\]$/\1/; y#/+#_-#; s#^#ref+gkms://#'"
   alias gkms-enc-secret=" sed 's#^ref+gkms://##; y#_-#/+#; s#^#ENC[gkms,#; s#\$#]#'"
+  alias gkms-to-k8s="sed -i '' -e 's#ENC\[[^,]*,\([^]]*\)\]#ref+gkms://\1#g' -e ':a' -e 's#\(ref+gkms://[^ \"]*\)/#\1_#g; ta' -e ':b' -e 's#\(ref+gkms://[^ \"]*\)+#\1-#g; tb'"
 fi
 
 if which claude &> /dev/null; then

@@ -15,11 +15,11 @@ Apply these steps before any commit:
 - If work is related to Jira ticket, prefix commit message with ticket ID (e.g. `PROJ-123 Change image size`)
 
 ## Working trees
-When implementing changes in a Git repository, follow the `using-git-worktrees` skill to set up an isolated workspace.
+When implementing changes in a Git repository, set up an isolated workspace to enable parallel execution:
+- Use `git worktree add <path> -b <branch> <base-branch>` to create an isolated worktree (do NOT use `EnterWorktree` — it does not work in subagents)
+- Always place worktrees under `.claude/worktrees/` in the repo root — never use `/tmp`
+- Use `git -C <path>` to run git commands inside the worktree without `cd`
+- Worktrees allow multiple independent tasks to run in parallel without interfering with each other
 
-## Aliases
-| Task                                     | Command             |
-| ---------------------------------------- | ------------------- |
-| View commits only made by user           | `git my-commits`    |
-| Create Merge Request (GitLab only)       | `git make-mr`       |
-| Create draft Merge Request (GitLab only) | `git make-draft-mr` |
+## Merge Requests
+- Always use `git make-mr` or `git make-draft-mr` to create merge requests — never use GitLab MCP tools for this

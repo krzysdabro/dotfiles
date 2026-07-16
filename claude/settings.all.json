@@ -16,7 +16,14 @@
   "alwaysThinkingEnabled": true,
   "permissions": {
     "allow": [
-      "Bash(git show *)"
+      "Edit(./**)",
+      "Read(./**)",
+      "Write(./**)",
+
+      "Bash(git:*)",
+      "Bash(gkms-to-k8s:*)",
+
+      "mcp__jira__*"
     ],
     "deny": [
       "Read(.env)",
@@ -36,20 +43,15 @@
       "Edit(~/.zshrc)",
       "Edit(~/.ssh/**)",
 
-      "Bash(rm -rf *)",
-      "Bash(rm -fr *)",
-      "Bash(sudo *)",
-      "Bash(mkfs *)",
-      "Bash(dd *)",
-      "Bash(wget *|bash*)",
-      "Bash(wget *| bash*)",
-      "Bash(git push --force*)",
-      "Bash(git push *--force*)",
-      "Bash(git reset *--hard*)",
-      "Bash(git fpush)",
-      "Bash(git sync)",
-      "Bash(op *)",
-      "Bash(gh auth *)"
+      "Bash(rm -rf:*)",
+      "Bash(rm -fr:*)",
+      "Bash(sudo:*)",
+      "Bash(mkfs:*)",
+      "Bash(dd:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(op:*)",
+      "Bash(gh auth:*)"
     ]
   },
   "enabledPlugins": {

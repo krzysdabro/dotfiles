@@ -77,7 +77,8 @@ if [[ -n "${IS_DARWIN-}" ]]; then
     bash -c "$(curl -fsSl https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
 
-  arrow "Run homebrew"
+  ask "Do you want to run homebrew?" && \
+  arrow "Run homebrew" && \
   brew bundle --file=${DOTFILES}/Brewfile
 
   # https://support.1password.com/could-not-connect/#for-all-browsers
@@ -179,6 +180,12 @@ install_claude() {
   git diff --no-index --no-prefix --ignore-blank-lines --color ${claude_settings_current} ${claude_settings_new} || \
   ask "Do you accept changes in ${DOTFILES}/claude/settings.json?" && \
   cat ${claude_settings_new} > ${DOTFILES}/claude/settings.json
+}
+
+install_scripts() {
+  installing_dotfiles "User scripts"
+
+  sudo link "${DOTFILES}/scripts/check-gcloud-auth" "/usr/local/bin/check-gcloud-auth"
 }
 
 
