@@ -11,6 +11,7 @@
   s  = status -sb
 
   amend      = commit --amend --no-edit
+  fix        = commit --fixup
   upush      = "!git push -u ${1:-origin} $(git branch --show-current)"
   fpush      = push --force-with-lease
   sync       = "!git pull --rebase && git push"
