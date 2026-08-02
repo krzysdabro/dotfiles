@@ -15,6 +15,7 @@
   "enableAllProjectMcpServers": false,
   "alwaysThinkingEnabled": true,
   "permissions": {
+    "defaultMode": "auto",
     "allow": [
       "Edit(./**)",
       "Read(./**)",
